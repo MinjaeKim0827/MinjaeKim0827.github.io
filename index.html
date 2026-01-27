@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Minjae Kim | Astrophysicist in Training</title>
+    <title>Minjae Kim | Astrophysicist</title>
     <style>
         :root {
             --primary-color: #2c3e50;
@@ -18,194 +18,292 @@
             background-color: var(--bg-color);
             margin: 0;
             padding: 0;
-        }
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            background: white;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
             min-height: 100vh;
         }
-        header {
-            text-align: center;
-            padding: 40px 0;
-            border-bottom: 2px solid var(--primary-color);
+        
+        /* 네비게이션 메뉴 스타일 */
+        nav {
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 0 20px;
         }
-        h1 {
-            margin: 0;
-            color: var(--primary-color);
-            font-size: 2.5em;
-        }
-        .subtitle {
-            font-size: 1.2em;
-            color: #7f8c8d;
-            margin-top: 10px;
-        }
-        section {
-            padding: 30px 0;
-            border-bottom: 1px solid #eee;
-        }
-        h2 {
-            color: var(--primary-color);
-            border-left: 5px solid var(--accent-color);
-            padding-left: 10px;
-            margin-bottom: 20px;
-        }
-        .item {
-            margin-bottom: 20px;
-        }
-        .item-header {
+        .nav-container {
+            max-width: 900px;
+            margin: 0 auto;
             display: flex;
             justify-content: space-between;
-            align-items: baseline;
-            flex-wrap: wrap;
+            align-items: center;
+            height: 60px;
         }
-        .item-title {
+        .logo {
             font-weight: bold;
-            font-size: 1.1em;
+            font-size: 1.2em;
+            color: var(--primary-color);
+            cursor: pointer;
         }
-        .item-date {
-            color: #7f8c8d;
-            font-style: italic;
+        .menu {
+            display: flex;
+            gap: 20px;
         }
-        .item-subtitle {
+        .menu-item {
+            cursor: pointer;
             color: #555;
-            margin-bottom: 5px;
+            font-weight: 500;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: color 0.3s, background-color 0.3s;
         }
-        ul {
-            margin: 5px 0;
-            padding-left: 20px;
-        }
-        .contact-info {
-            text-align: center;
-            margin-top: 20px;
-        }
-        a {
+        .menu-item:hover {
             color: var(--accent-color);
-            text-decoration: none;
+            background-color: #f0f8ff;
         }
-        a:hover {
-            text-decoration: underline;
+        .menu-item.active {
+            color: var(--accent-color);
+            font-weight: bold;
         }
+
+        /* 메인 컨테이너 */
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 0 20px;
+            flex: 1;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        /* 페이지 전환 효과 */
+        .page-section {
+            display: none; /* 기본적으로 다 숨김 */
+            animation: fadeIn 0.5s ease;
+        }
+        .page-section.active {
+            display: block; /* 활성화된 페이지만 보임 */
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* 섹션별 스타일 */
+        h1 { margin-top: 0; color: var(--primary-color); }
+        h2 { border-bottom: 2px solid var(--accent-color); padding-bottom: 10px; margin-top: 0; color: var(--primary-color); }
+        
+        .profile-header { text-align: center; margin-bottom: 40px; }
+        .profile-img-placeholder {
+            width: 150px; height: 150px;
+            background-color: #ddd;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: flex; align-items: center; justify-content: center;
+            color: #777;
+        }
+        
+        .item { margin-bottom: 25px; border-bottom: 1px solid #eee; padding-bottom: 15px; }
+        .item:last-child { border-bottom: none; }
+        .item-header { display: flex; justify-content: space-between; flex-wrap: wrap; margin-bottom: 5px; }
+        .item-title { font-weight: bold; font-size: 1.1em; color: var(--primary-color); }
+        .item-date { color: #7f8c8d; font-style: italic; }
+        .item-subtitle { color: #555; margin-bottom: 8px; display: block; }
+        
+        /* 사진관 스타일 */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+        }
+        .gallery-item {
+            background: #eee;
+            aspect-ratio: 1 / 1; /* 정사각형 비율 */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #aaa;
+            border-radius: 8px;
+            transition: transform 0.2s;
+        }
+        .gallery-item:hover { transform: scale(1.02); background: #e0e0e0; }
+
+        footer { text-align: center; padding: 20px; color: #aaa; font-size: 0.9em; border-top: 1px solid #eee; margin-top: 40px;}
+
         /* 모바일 대응 */
         @media (max-width: 600px) {
-            .item-header {
-                flex-direction: column;
-            }
-            .container {
-                padding: 10px;
-            }
+            .nav-container { flex-direction: column; height: auto; padding: 10px 0; }
+            .menu { margin-top: 10px; font-size: 0.9em; gap: 10px; }
         }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <header>
-        <h1>Minjae Kim (김민재)</h1>
-        <div class="subtitle">Undergraduate Student in Physics at KAIST</div>
-        <div class="contact-info">
-            📧 <a href="mailto:heromj27@kaist.ac.kr">heromj27@kaist.ac.kr</a> | 
-            📍 Daejeon, South Korea
+    <nav>
+        <div class="nav-container">
+            <div class="logo" onclick="showPage('home')">Minjae Kim</div>
+            <div class="menu">
+                <span class="menu-item active" onclick="showPage('home')">About</span>
+                <span class="menu-item" onclick="showPage('education')">Education</span>
+                <span class="menu-item" onclick="showPage('research')">Research</span>
+                <span class="menu-item" onclick="showPage('others')">Others</span>
+                <span class="menu-item" onclick="showPage('gallery')">Gallery</span>
             </div>
-    </header>
+        </div>
+    </nav>
 
-    <section id="about">
-        [cite_start]<h2>About Me [cite: 8]</h2>
-        <p>
-            Hello! I'm Minjae Kim, an undergraduate student in physics at KAIST. 
-            [cite_start]My research focus lies in astrophysics, particularly in understanding the physical processes that govern the structure and evolution of the universe[cite: 9]. 
-        </p>
-        <p>
-            [cite_start]Currently, I am conducting research in the OBSCAL group at KAIST, studying cosmology and galaxy evolution using cosmological simulations[cite: 10]. 
-            [cite_start]I plan to graduate in the spring of 2027 and continue my academic journey by pursuing graduate studies in astrophysics[cite: 11].
-        </p>
-    </section>
-
-    <section id="education">
-        <h2>Education</h2>
-        <div class="item">
-            <div class="item-header">
-                [cite_start]<span class="item-title">Korea Advanced Institute of Science and Technology (KAIST) [cite: 3]</span>
-                [cite_start]<span class="item-date">2020 - Present [cite: 4]</span>
+    <div class="container">
+        <div id="home" class="page-section active">
+            <div class="profile-header">
+                <div class="profile-img-placeholder">Profile Pic</div>
+                <h1>Minjae Kim (김민재)</h1>
+                <p style="color: #7f8c8d;">Undergraduate Student in Physics at KAIST</p>
+                <div style="margin-top: 15px;">
+                    📧 <a href="mailto:heromj27@kaist.ac.kr" style="color: var(--accent-color); text-decoration: none;">heromj27@kaist.ac.kr</a> | 📍 Daejeon, Korea
+                </div>
             </div>
-            [cite_start]<div class="item-subtitle">B.S. in Physics, Minor in Electrical Engineering [cite: 3]</div>
+            <section>
+                <h2>About Me</h2>
+                <p>
+                    Hello! I'm Minjae Kim, an undergraduate student in physics at KAIST. 
+                    My research focus lies in astrophysics, particularly in understanding the physical processes that govern the structure and evolution of the universe.
+                </p>
+                <p>
+                    Currently, I am conducting research in the OBSCAL group at KAIST, studying cosmology and galaxy evolution using cosmological simulations. 
+                    I plan to graduate in the spring of 2027 and continue my academic journey by pursuing graduate studies in astrophysics.
+                </p>
+            </section>
+        </div>
+
+        <div id="education" class="page-section">
+            <h2>Education</h2>
+            <div class="item">
+                <div class="item-header">
+                    <span class="item-title">Korea Advanced Institute of Science and Technology (KAIST)</span>
+                    <span class="item-date">2020 - Present</span>
+                </div>
+                <span class="item-subtitle">B.S. in Physics, Minor in Electrical Engineering</span>
+                <ul>
+                    <li>Cumulative GPA: 3.85 / 4.3 (Major: 3.94 / 4.3)</li>
+                </ul>
+            </div>
+            <div class="item">
+                <div class="item-header">
+                    <span class="item-title">Jeonnam Science High School</span>
+                    <span class="item-date">2018 - 2019</span>
+                </div>
+                <span class="item-subtitle">Early Graduation</span>
+            </div>
+        </div>
+
+        <div id="research" class="page-section">
+            <h2>Research Experience</h2>
+            
+            <div class="item">
+                <div class="item-header">
+                    <span class="item-title">International Student Researcher</span>
+                    <span class="item-date">Summer 2025 - Present</span>
+                </div>
+                <span class="item-subtitle">UC Santa Cruz | Advised by Prof. Puragra Guha Thakurta</span>
+                <ul>
+                    <li>Participated in UC Santa Cruz International Summer Research Program.</li>
+                    <li>Project: Kinematical Analysis of M32 - A Comparative Study of Serendipitously Observed Versus Targeted Stars and Assessment of Spectral Blending.</li>
+                    <li>Served as a Mentor for the Science Internship Program, leading a research group of high school interns.</li>
+                </ul>
+            </div>
+
+            <div class="item">
+                <div class="item-header">
+                    <span class="item-title">Undergraduate Researcher (OBSCAL)</span>
+                    <span class="item-date">Fall 2024 - Present</span>
+                </div>
+                <span class="item-subtitle">KAIST | Advised by Prof. Junhan Kim</span>
+                <ul>
+                    <li>Project: Probing Hot gas Components of Circumgalactic Medium Through X-ray signatures.</li>
+                    <li>Participating in KAIST Undergraduate Research Program (URP) (Spring 2025).</li>
+                </ul>
+            </div>
+
+            <div class="item">
+                <div class="item-header">
+                    <span class="item-title">Summer Exchange Student</span>
+                    <span class="item-date">Summer 2024</span>
+                </div>
+                <span class="item-subtitle">UC Berkeley Summer Session</span>
+            </div>
+        </div>
+
+        <div id="others" class="page-section">
+            <h2>Honors & Awards</h2>
             <ul>
-                [cite_start]<li>Cumulative GPA: 3.85 / 4.3 (Major: 3.94 / 4.3) [cite: 5]</li>
+                <li><strong>Tech Innovator Recognition</strong>, NASA Space Apps Challenge, Seoul (2025)</li>
+                <li><strong>Outstanding Presentation Awards</strong>, Korea Physics Society (KPS) (2025)</li>
+                <li><strong>Departmental Honor Scholarship & Dean's list</strong>, Department of Physics (2025)</li>
+                <li><strong>KAIST Presidential Fellowship</strong> (2020)</li>
+                <li><strong>National Science & Technology Scholarship</strong> (2020)</li>
+                <li><strong>Hanseong Son JaeHan Scholarship</strong> (2019)</li>
+            </ul>
+
+            <br>
+            <h2>Skills & Others</h2>
+            <ul>
+                <li><strong>Programming:</strong> Python, Git, LaTeX</li>
+                <li><strong>Languages:</strong> Korean (Native), English (TOEFL 103)</li>
+                <li><strong>Military Service:</strong> Republic of Korea Army, Honorable Discharge (Sergeant) (Jan 2022 - Jul 2023)</li>
             </ul>
         </div>
-        <div class="item">
-            <div class="item-header">
-                <span class="item-title">Jeonnam Science High School</span>
-                [cite_start]<span class="item-date">2018 - 2019 [cite: 6]</span>
-            </div>
-            [cite_start]<div class="item-subtitle">Early Graduation [cite: 7]</div>
-        </div>
-    </section>
 
-    <section id="research">
-        <h2>Research Experience</h2>
-        
-        <div class="item">
-            <div class="item-header">
-                <span class="item-title">International Student Researcher</span>
-                [cite_start]<span class="item-date">Summer 2025 - Present [cite: 13]</span>
+        <div id="gallery" class="page-section">
+            <h2>Gallery</h2>
+            <p style="margin-bottom: 20px;">Memories and moments.</p>
+            <div class="gallery-grid">
+                <div class="gallery-item">Photo 1</div>
+                <div class="gallery-item">Photo 2</div>
+                <div class="gallery-item">Photo 3</div>
+                <div class="gallery-item">Photo 4</div>
             </div>
-            <div class="item-subtitle">UC Santa Cruz | [cite_start]Advised by Prof. Puragra Guha Thakurta [cite: 13]</div>
-            <ul>
-                <li>Participated in UC Santa Cruz International Summer Research Program.</li>
-                <li>Project: Kinematical Analysis of M32 - A Comparative Study of Serendipitously Observed Versus Targeted Stars and Assessment of Spectral Blending.</li>
-                <li>Served as a Mentor for the Science Internship Program, leading a research group of high school interns.</li>
-            </ul>
         </div>
 
-        <div class="item">
-            <div class="item-header">
-                <span class="item-title">Undergraduate Researcher (OBSCAL)</span>
-                [cite_start]<span class="item-date">Fall 2024 - Present [cite: 13]</span>
-            </div>
-            <div class="item-subtitle">KAIST | [cite_start]Advised by Prof. Junhan Kim [cite: 13]</div>
-            <ul>
-                <li>Project: Probing Hot gas Components of Circumgalactic Medium Through X-ray signatures.</li>
-                <li>Participating in KAIST Undergraduate Research Program (URP) (Spring 2025).</li>
-            </ul>
-        </div>
+    </div>
 
-        <div class="item">
-            <div class="item-header">
-                <span class="item-title">Summer Exchange Student</span>
-                [cite_start]<span class="item-date">Summer 2024 [cite: 13]</span>
-            </div>
-            [cite_start]<div class="item-subtitle">UC Berkeley Summer Session [cite: 13]</div>
-        </div>
-    </section>
-
-    <section id="awards">
-        <h2>Honors & Awards</h2>
-        <ul>
-            [cite_start]<li><strong>Tech Innovator Recognition</strong>, NASA Space Apps Challenge, Seoul (2025) [cite: 13]</li>
-            [cite_start]<li><strong>Outstanding Presentation Awards</strong>, Korea Physics Society (KPS) (2025) [cite: 13]</li>
-            [cite_start]<li><strong>Departmental Honor Scholarship & Dean's list</strong>, Department of Physics (2025) [cite: 13]</li>
-            [cite_start]<li><strong>KAIST Presidential Fellowship</strong> (2020) [cite: 13]</li>
-            [cite_start]<li><strong>National Science & Technology Scholarship</strong> (2020) [cite: 13]</li>
-            [cite_start]<li><strong>Hanseong Son JaeHan Scholarship</strong> (2019) [cite: 13]</li>
-        </ul>
-    </section>
-
-    <section id="skills">
-        <h2>Skills & Others</h2>
-        <ul>
-            [cite_start]<li><strong>Programming:</strong> Python, Git, LaTeX [cite: 15]</li>
-            [cite_start]<li><strong>Languages:</strong> Korean (Native), English (TOEFL 103) [cite: 15]</li>
-            [cite_start]<li><strong>Military Service:</strong> Republic of Korea Army, Honorable Discharge (Sergeant) (Jan 2022 - Jul 2023) [cite: 13]</li>
-        </ul>
-    </section>
-
-    <footer style="text-align: center; padding: 20px; color: #aaa; font-size: 0.9em;">
+    <footer>
         &copy; 2026 Minjae Kim. All rights reserved.
     </footer>
-</div>
+
+    <script>
+        function showPage(pageId) {
+            // 1. 모든 페이지 숨기기
+            const pages = document.querySelectorAll('.page-section');
+            pages.forEach(page => {
+                page.classList.remove('active');
+            });
+
+            // 2. 선택한 페이지만 보이기
+            document.getElementById(pageId).classList.add('active');
+
+            // 3. 메뉴 버튼 스타일 업데이트 (선택된 것만 진하게)
+            const menuItems = document.querySelectorAll('.menu-item');
+            menuItems.forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            // 클릭된 버튼 찾아서 active 추가 (단순화된 로직)
+            const clickedMenuText = pageId === 'home' ? 'About' : 
+                                  pageId === 'education' ? 'Education' :
+                                  pageId === 'research' ? 'Research' :
+                                  pageId === 'others' ? 'Others' : 'Gallery';
+            
+            menuItems.forEach(item => {
+                if(item.innerText === clickedMenuText) {
+                    item.classList.add('active');
+                }
+            });
+            
+            // 모바일에서 스크롤 위로 올리기
+            window.scrollTo(0, 0);
+        }
+    </script>
 
 </body>
 </html>
