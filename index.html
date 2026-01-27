@@ -132,7 +132,71 @@
         .gallery-item:hover { transform: scale(1.02); background: #e0e0e0; }
 
         footer { text-align: center; padding: 20px; color: #aaa; font-size: 0.9em; border-top: 1px solid #eee; margin-top: 40px;}
+        /* 갤러리 전용 스타일 */
+        .gallery-nav {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        .gallery-btn {
+            padding: 8px 16px;
+            border: 1px solid var(--accent-color);
+            background: white;
+            color: var(--accent-color);
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .gallery-btn:hover, .gallery-btn.active {
+            background: var(--accent-color);
+            color: white;
+        }
 
+        /* 목차 리스트 스타일 */
+        .event-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+        }
+        .event-card {
+            background: white;
+            border: 1px solid #eee;
+            padding: 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .event-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-color: var(--accent-color);
+        }
+        .event-title { font-weight: bold; font-size: 1.1em; margin-bottom: 5px; }
+        .event-date { font-size: 0.85em; color: #888; }
+
+        /* 상세 화면 스타일 */
+        .gallery-detail { display: none; } /* 평소엔 숨김 */
+        .back-btn {
+            margin-bottom: 15px;
+            cursor: pointer;
+            color: var(--accent-color);
+            font-weight: bold;
+            display: inline-block;
+        }
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 10px;
+            margin-top: 15px;
+        }
+        .photo-item {
+            width: 100%;
+            aspect-ratio: 1/1;
+            object-fit: cover;
+            border-radius: 8px;
+            background: #eee;
+        }
         /* 모바일 대응 */
         @media (max-width: 600px) {
             .nav-container { flex-direction: column; height: auto; padding: 10px 0; }
@@ -216,11 +280,11 @@
 
             <div class="item">
                 <div class="item-header">
-                    <span class="item-title">Winter Research Intern</span>
+                    <span class="item-title">KASI Research Intern (SPHEREx team)</span>
                     <span class="item-date">Winter 2026 - Present</span>
                 </div>
                 <span class="item-subtitle">
-                    Korea Astronomy and Space Science Institute (KASI) | Advised by <a href="https://www.linkedin.com/in/bomee-lee-62269569/" target="_blank">Dr. Bomee Lee</a> & Dr. Woong-Seob Jeong (PI)
+                    Korea Astronomy and Space Science Institute (KASI) | Advised by <a href="https://www.linkedin.com/in/bomee-lee-62269569/" target="_blank">Dr. Bomee Lee</a> & Dr. Woong-Seob Jeong
                 </span>
                 <ul>
                     <li>Conducting spectral analysis of Quasars with very high redshift (z > 5) through the SPHEREx survey results.</li>
@@ -292,15 +356,27 @@
 
         <div id="gallery" class="page-section">
             <h2>Gallery</h2>
-            <p style="margin-bottom: 20px;">Memories and moments.</p>
-            <div class="gallery-grid">
-                <div class="gallery-item">Photo 1</div>
-                <div class="gallery-item">Photo 2</div>
-                <div class="gallery-item">Photo 3</div>
-                <div class="gallery-item">Photo 4</div>
+            <p>Memories and moments.</p>
+
+            <div class="gallery-nav">
+                <button class="gallery-btn" onclick="loadYear('2020-2023', this)">2020-2023</button>
+                <button class="gallery-btn" onclick="loadYear('2024', this)">2024</button>
+                <button class="gallery-btn" onclick="loadYear('2025', this)">2025</button>
+                <button class="gallery-btn" onclick="loadYear('2026', this)">2026</button>
+            </div>
+
+            <div id="event-list-container" class="event-list">
+                <div style="color: #777;">Please select a year above.</div>
+            </div>
+
+            <div id="gallery-detail-view" class="gallery-detail">
+                <div class="back-btn" onclick="closeDetail()">← Back to List</div>
+                <h3 id="detail-title" style="margin-top:0; color:var(--primary-color);">Title</h3>
+                <p id="detail-desc" style="color: #555;">Description</p>
+                <div id="detail-photos" class="photo-grid">
+                    </div>
             </div>
         </div>
-
     </div>
 
     <footer>
@@ -309,6 +385,132 @@
 
     <script>
         function showPage(pageId) {
+            /* ========================
+           갤러리 데이터 및 기능
+           ======================== */
+        
+        // ★ 여기에 내용을 채우시면 됩니다!
+        const galleryData = {
+            "2020-2023": [
+                {
+                    title: "Military Service",
+                    date: "Jan 2022 - Jul 2023",
+                    desc: "Served as a Sergeant in ROK Army. Unforgettable memories with comrades.",
+                    images: ["army1.jpg", "army2.jpg"] // 사진 파일명
+                },
+                {
+                    title: "KAIST Freshman Year",
+                    date: "2020",
+                    desc: "Beginning of my journey in Physics.",
+                    images: ["kaist_campus.jpg"]
+                }
+            ],
+            "2024": [
+                {
+                    title: "UC Berkeley Summer Session",
+                    date: "Summer 2024",
+                    desc: "Studied Introduction to Astrophysics and explored the Bay Area.",
+                    images: ["berkeley_gate.jpg", "class_photo.jpg"]
+                }
+            ],
+            "2025": [
+                {
+                    title: "NASA Space Apps Challenge",
+                    date: "Oct 2025",
+                    desc: "Won the Tech Innovator Recognition with 'Geese Crossing' project.",
+                    images: ["nasa_team.jpg", "nasa_award.jpg"]
+                },
+                {
+                    title: "KPS Presentation",
+                    date: "Spring 2025",
+                    desc: "Received Outstanding Presentation Award.",
+                    images: ["kps_presentation.jpg"]
+                }
+            ],
+            "2026": [
+                {
+                    title: "KASI Internship",
+                    date: "Winter 2026",
+                    desc: "Researching on SPHEREx mission data analysis.",
+                    images: ["kasi_office.jpg"]
+                }
+            ]
+        };
+
+        // 연도 클릭 시 실행되는 함수
+        function loadYear(year, btnElement) {
+            // 1. 버튼 스타일 활성화
+            document.querySelectorAll('.gallery-btn').forEach(b => b.classList.remove('active'));
+            if(btnElement) btnElement.classList.add('active');
+
+            // 2. 화면 초기화 (목차 보이기, 상세화면 숨기기)
+            const listContainer = document.getElementById('event-list-container');
+            const detailView = document.getElementById('gallery-detail-view');
+            
+            listContainer.style.display = 'grid';
+            detailView.style.display = 'none';
+            listContainer.innerHTML = ''; // 기존 내용 비우기
+
+            // 3. 데이터 가져와서 목록 만들기
+            const events = galleryData[year];
+            
+            if (!events || events.length === 0) {
+                listContainer.innerHTML = '<div style="color:#aaa;">No photos yet for this year.</div>';
+                return;
+            }
+
+            events.forEach((evt, index) => {
+                const card = document.createElement('div');
+                card.className = 'event-card';
+                card.onclick = () => showDetail(year, index); // 클릭하면 상세화면으로
+                
+                card.innerHTML = `
+                    <div class="event-title">${evt.title}</div>
+                    <div class="event-date">${evt.date}</div>
+                `;
+                listContainer.appendChild(card);
+            });
+        }
+
+        // 목차 클릭 시 상세화면(사진) 보여주는 함수
+        function showDetail(year, index) {
+            const evt = galleryData[year][index];
+            
+            // 화면 전환
+            document.getElementById('event-list-container').style.display = 'none';
+            const detailView = document.getElementById('gallery-detail-view');
+            detailView.style.display = 'block';
+
+            // 내용 채우기
+            document.getElementById('detail-title').innerText = evt.title;
+            document.getElementById('detail-desc').innerText = evt.desc;
+            
+            // 사진 채우기
+            const photoContainer = document.getElementById('detail-photos');
+            photoContainer.innerHTML = ''; // 초기화
+
+            if(evt.images && evt.images.length > 0) {
+                evt.images.forEach(imgName => {
+                    const img = document.createElement('img');
+                    img.src = imgName; // 이미지 파일명
+                    img.className = 'photo-item';
+                    img.alt = evt.title;
+                    // 이미지가 깨졌을 때(파일 없을 때) 처리
+                    img.onerror = function() { 
+                        this.style.display='none'; 
+                    };
+                    photoContainer.appendChild(img);
+                });
+            } else {
+                photoContainer.innerHTML = '<div style="color:#aaa;">No photos uploaded.</div>';
+            }
+        }
+
+        // 목록으로 돌아가기 버튼
+        function closeDetail() {
+            document.getElementById('event-list-container').style.display = 'grid';
+            document.getElementById('gallery-detail-view').style.display = 'none';
+        }
             // 1. 모든 페이지 숨기기
             const pages = document.querySelectorAll('.page-section');
             pages.forEach(page => {
