@@ -95,13 +95,15 @@
         h2 { border-bottom: 2px solid var(--accent-color); padding-bottom: 10px; margin-top: 0; color: var(--primary-color); }
         
         .profile-header { text-align: center; margin-bottom: 40px; }
-        .profile-img-placeholder {
-            width: 150px; height: 150px;
-            background-color: #ddd;
-            border-radius: 50%;
-            margin: 0 auto 20px;
-            display: flex; align-items: center; justify-content: center;
-            color: #777;
+        /* 새로 추가할 스타일 */
+        .profile-img {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;       /* 둥글게 만들기 */
+        object-fit: cover;        /* 사진 비율 유지하며 꽉 채우기 (찌그러짐 방지) */
+        margin: 0 auto 20px;      /* 가운데 정렬 및 아래 여백 */
+        display: block;           /* 박스 형태로 만들어 가운데 정렬 가능하게 함 */
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* 살짝 그림자 추가 (선택사항) */
         }
         
         .item { margin-bottom: 25px; border-bottom: 1px solid #eee; padding-bottom: 15px; }
@@ -156,7 +158,7 @@
     <div class="container">
         <div id="home" class="page-section active">
             <div class="profile-header">
-                <div class="profile-img-placeholder">Profile Pic</div>
+                <img src="coffee.jpg" class="profile-img" alt="Profile Picture">
                 <h1>Minjae Kim (김민재)</h1>
                 <p style="color: #7f8c8d;">Undergraduate Student in Physics at KAIST</p>
                 <div style="margin-top: 15px;">
