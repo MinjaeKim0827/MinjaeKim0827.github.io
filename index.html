@@ -1,6 +1,211 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minjae Kim | Astrophysicist in Training</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --accent-color: #3498db;
+            --text-color: #333;
+            --bg-color: #f9f9f9;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            min-height: 100vh;
+        }
+        header {
+            text-align: center;
+            padding: 40px 0;
+            border-bottom: 2px solid var(--primary-color);
+        }
+        h1 {
+            margin: 0;
+            color: var(--primary-color);
+            font-size: 2.5em;
+        }
+        .subtitle {
+            font-size: 1.2em;
+            color: #7f8c8d;
+            margin-top: 10px;
+        }
+        section {
+            padding: 30px 0;
+            border-bottom: 1px solid #eee;
+        }
+        h2 {
+            color: var(--primary-color);
+            border-left: 5px solid var(--accent-color);
+            padding-left: 10px;
+            margin-bottom: 20px;
+        }
+        .item {
+            margin-bottom: 20px;
+        }
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
+        }
+        .item-title {
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .item-date {
+            color: #7f8c8d;
+            font-style: italic;
+        }
+        .item-subtitle {
+            color: #555;
+            margin-bottom: 5px;
+        }
+        ul {
+            margin: 5px 0;
+            padding-left: 20px;
+        }
+        .contact-info {
+            text-align: center;
+            margin-top: 20px;
+        }
+        a {
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        /* 모바일 대응 */
+        @media (max-width: 600px) {
+            .item-header {
+                flex-direction: column;
+            }
+            .container {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
 <body>
-  <h1>안녕하세요, 개발자 홍길동의 포트폴리오입니다.</h1>
+
+<div class="container">
+    <header>
+        <h1>Minjae Kim (김민재)</h1>
+        <div class="subtitle">Undergraduate Student in Physics at KAIST</div>
+        <div class="contact-info">
+            📧 <a href="mailto:heromj27@kaist.ac.kr">heromj27@kaist.ac.kr</a> | 
+            📍 Daejeon, South Korea
+            </div>
+    </header>
+
+    <section id="about">
+        [cite_start]<h2>About Me [cite: 8]</h2>
+        <p>
+            Hello! I'm Minjae Kim, an undergraduate student in physics at KAIST. 
+            [cite_start]My research focus lies in astrophysics, particularly in understanding the physical processes that govern the structure and evolution of the universe[cite: 9]. 
+        </p>
+        <p>
+            [cite_start]Currently, I am conducting research in the OBSCAL group at KAIST, studying cosmology and galaxy evolution using cosmological simulations[cite: 10]. 
+            [cite_start]I plan to graduate in the spring of 2027 and continue my academic journey by pursuing graduate studies in astrophysics[cite: 11].
+        </p>
+    </section>
+
+    <section id="education">
+        <h2>Education</h2>
+        <div class="item">
+            <div class="item-header">
+                [cite_start]<span class="item-title">Korea Advanced Institute of Science and Technology (KAIST) [cite: 3]</span>
+                [cite_start]<span class="item-date">2020 - Present [cite: 4]</span>
+            </div>
+            [cite_start]<div class="item-subtitle">B.S. in Physics, Minor in Electrical Engineering [cite: 3]</div>
+            <ul>
+                [cite_start]<li>Cumulative GPA: 3.85 / 4.3 (Major: 3.94 / 4.3) [cite: 5]</li>
+            </ul>
+        </div>
+        <div class="item">
+            <div class="item-header">
+                <span class="item-title">Jeonnam Science High School</span>
+                [cite_start]<span class="item-date">2018 - 2019 [cite: 6]</span>
+            </div>
+            [cite_start]<div class="item-subtitle">Early Graduation [cite: 7]</div>
+        </div>
+    </section>
+
+    <section id="research">
+        <h2>Research Experience</h2>
+        
+        <div class="item">
+            <div class="item-header">
+                <span class="item-title">International Student Researcher</span>
+                [cite_start]<span class="item-date">Summer 2025 - Present [cite: 13]</span>
+            </div>
+            <div class="item-subtitle">UC Santa Cruz | [cite_start]Advised by Prof. Puragra Guha Thakurta [cite: 13]</div>
+            <ul>
+                <li>Participated in UC Santa Cruz International Summer Research Program.</li>
+                <li>Project: Kinematical Analysis of M32 - A Comparative Study of Serendipitously Observed Versus Targeted Stars and Assessment of Spectral Blending.</li>
+                <li>Served as a Mentor for the Science Internship Program, leading a research group of high school interns.</li>
+            </ul>
+        </div>
+
+        <div class="item">
+            <div class="item-header">
+                <span class="item-title">Undergraduate Researcher (OBSCAL)</span>
+                [cite_start]<span class="item-date">Fall 2024 - Present [cite: 13]</span>
+            </div>
+            <div class="item-subtitle">KAIST | [cite_start]Advised by Prof. Junhan Kim [cite: 13]</div>
+            <ul>
+                <li>Project: Probing Hot gas Components of Circumgalactic Medium Through X-ray signatures.</li>
+                <li>Participating in KAIST Undergraduate Research Program (URP) (Spring 2025).</li>
+            </ul>
+        </div>
+
+        <div class="item">
+            <div class="item-header">
+                <span class="item-title">Summer Exchange Student</span>
+                [cite_start]<span class="item-date">Summer 2024 [cite: 13]</span>
+            </div>
+            [cite_start]<div class="item-subtitle">UC Berkeley Summer Session [cite: 13]</div>
+        </div>
+    </section>
+
+    <section id="awards">
+        <h2>Honors & Awards</h2>
+        <ul>
+            [cite_start]<li><strong>Tech Innovator Recognition</strong>, NASA Space Apps Challenge, Seoul (2025) [cite: 13]</li>
+            [cite_start]<li><strong>Outstanding Presentation Awards</strong>, Korea Physics Society (KPS) (2025) [cite: 13]</li>
+            [cite_start]<li><strong>Departmental Honor Scholarship & Dean's list</strong>, Department of Physics (2025) [cite: 13]</li>
+            [cite_start]<li><strong>KAIST Presidential Fellowship</strong> (2020) [cite: 13]</li>
+            [cite_start]<li><strong>National Science & Technology Scholarship</strong> (2020) [cite: 13]</li>
+            [cite_start]<li><strong>Hanseong Son JaeHan Scholarship</strong> (2019) [cite: 13]</li>
+        </ul>
+    </section>
+
+    <section id="skills">
+        <h2>Skills & Others</h2>
+        <ul>
+            [cite_start]<li><strong>Programming:</strong> Python, Git, LaTeX [cite: 15]</li>
+            [cite_start]<li><strong>Languages:</strong> Korean (Native), English (TOEFL 103) [cite: 15]</li>
+            [cite_start]<li><strong>Military Service:</strong> Republic of Korea Army, Honorable Discharge (Sergeant) (Jan 2022 - Jul 2023) [cite: 13]</li>
+        </ul>
+    </section>
+
+    <footer style="text-align: center; padding: 20px; color: #aaa; font-size: 0.9em;">
+        &copy; 2026 Minjae Kim. All rights reserved.
+    </footer>
+</div>
+
 </body>
 </html>
