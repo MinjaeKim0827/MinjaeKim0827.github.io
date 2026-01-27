@@ -383,150 +383,25 @@
         &copy; 2026 Minjae Kim. All rights reserved.
     </footer>
 
-    <script>
+  <script>
+        // 1. 페이지 전환 함수 (기존에 있던 것)
         function showPage(pageId) {
-            /* ========================
-           갤러리 데이터 및 기능
-           ======================== */
-        
-        // ★ 여기에 내용을 채우시면 됩니다!
-        const galleryData = {
-            "2020-2023": [
-                {
-                    title: "During Military Service",
-                    date: "Spring 2023",
-                    desc: "Served as a Sergeant in ROK Army. Time with my family during vacation.",
-                    images: ["familyphoto2023.jpg"] // 사진 파일명
-                },
-                {
-                    title: "KAIST Freshman Year",
-                    date: "2020",
-                    desc: "Beginning of my journey in Physics.",
-                    images: ["kaist_campus.jpg"]
-                }
-            ],
-            "2024": [
-                {
-                    title: "UC Berkeley Summer Session",
-                    date: "Summer 2024",
-                    desc: "Studied Introduction to Astrophysics and explored the Bay Area.",
-                    images: ["berkeley_gate.jpg", "class_photo.jpg"]
-                }
-            ],
-            "2025": [
-                {
-                    title: "NASA Space Apps Challenge",
-                    date: "Oct 2025",
-                    desc: "Won the Tech Innovator Recognition with 'Geese Crossing' project.",
-                    images: ["nasa_team.jpg", "nasa_award.jpg"]
-                },
-                {
-                    title: "KPS Presentation",
-                    date: "Spring 2025",
-                    desc: "Received Outstanding Presentation Award.",
-                    images: ["kps_presentation.jpg"]
-                }
-            ],
-            "2026": [
-                {
-                    title: "KASI Internship",
-                    date: "Winter 2026",
-                    desc: "Researching on SPHEREx mission data analysis.",
-                    images: ["kasi_office.jpg"]
-                }
-            ]
-        };
-
-        // 연도 클릭 시 실행되는 함수
-        function loadYear(year, btnElement) {
-            // 1. 버튼 스타일 활성화
-            document.querySelectorAll('.gallery-btn').forEach(b => b.classList.remove('active'));
-            if(btnElement) btnElement.classList.add('active');
-
-            // 2. 화면 초기화 (목차 보이기, 상세화면 숨기기)
-            const listContainer = document.getElementById('event-list-container');
-            const detailView = document.getElementById('gallery-detail-view');
-            
-            listContainer.style.display = 'grid';
-            detailView.style.display = 'none';
-            listContainer.innerHTML = ''; // 기존 내용 비우기
-
-            // 3. 데이터 가져와서 목록 만들기
-            const events = galleryData[year];
-            
-            if (!events || events.length === 0) {
-                listContainer.innerHTML = '<div style="color:#aaa;">No photos yet for this year.</div>';
-                return;
-            }
-
-            events.forEach((evt, index) => {
-                const card = document.createElement('div');
-                card.className = 'event-card';
-                card.onclick = () => showDetail(year, index); // 클릭하면 상세화면으로
-                
-                card.innerHTML = `
-                    <div class="event-title">${evt.title}</div>
-                    <div class="event-date">${evt.date}</div>
-                `;
-                listContainer.appendChild(card);
-            });
-        }
-
-        // 목차 클릭 시 상세화면(사진) 보여주는 함수
-        function showDetail(year, index) {
-            const evt = galleryData[year][index];
-            
-            // 화면 전환
-            document.getElementById('event-list-container').style.display = 'none';
-            const detailView = document.getElementById('gallery-detail-view');
-            detailView.style.display = 'block';
-
-            // 내용 채우기
-            document.getElementById('detail-title').innerText = evt.title;
-            document.getElementById('detail-desc').innerText = evt.desc;
-            
-            // 사진 채우기
-            const photoContainer = document.getElementById('detail-photos');
-            photoContainer.innerHTML = ''; // 초기화
-
-            if(evt.images && evt.images.length > 0) {
-                evt.images.forEach(imgName => {
-                    const img = document.createElement('img');
-                    img.src = imgName; // 이미지 파일명
-                    img.className = 'photo-item';
-                    img.alt = evt.title;
-                    // 이미지가 깨졌을 때(파일 없을 때) 처리
-                    img.onerror = function() { 
-                        this.style.display='none'; 
-                    };
-                    photoContainer.appendChild(img);
-                });
-            } else {
-                photoContainer.innerHTML = '<div style="color:#aaa;">No photos uploaded.</div>';
-            }
-        }
-
-        // 목록으로 돌아가기 버튼
-        function closeDetail() {
-            document.getElementById('event-list-container').style.display = 'grid';
-            document.getElementById('gallery-detail-view').style.display = 'none';
-        }
-            // 1. 모든 페이지 숨기기
+            // 모든 페이지 숨기기
             const pages = document.querySelectorAll('.page-section');
             pages.forEach(page => {
                 page.classList.remove('active');
             });
 
-            // 2. 선택한 페이지만 보이기
+            // 선택한 페이지만 보이기
             document.getElementById(pageId).classList.add('active');
 
-            // 3. 메뉴 버튼 스타일 업데이트 (선택된 것만 진하게)
+            // 메뉴 버튼 스타일 업데이트
             const menuItems = document.querySelectorAll('.menu-item');
             menuItems.forEach(item => {
                 item.classList.remove('active');
             });
             
-            // 클릭된 버튼 찾아서 active 추가 (단순화된 로직)
+            // 클릭된 버튼 찾아서 active 추가
             const clickedMenuText = pageId === 'home' ? 'About' : 
                                   pageId === 'education' ? 'Education' :
                                   pageId === 'research' ? 'Research' :
@@ -540,6 +415,113 @@
             
             // 모바일에서 스크롤 위로 올리기
             window.scrollTo(0, 0);
+        }
+
+        /* ========================
+           2. 갤러리 데이터 (여기서부터 작성하신 내용!)
+           ★ 함수 밖으로 꺼내져 있어야 합니다.
+           ======================== */
+        const galleryData = {
+            "2020-2023": [
+                {
+                    title: "During Military Service",
+                    date: "Spring 2023",
+                    desc: "Served as a Sergeant in ROK Army. Time with my family during vacation.",
+                    images: ["familyphoto2023.jpg"] 
+                }
+            ],
+            "2024": [
+                {
+                    title: "UC Berkeley Summer Session",
+                    date: "Summer 2024",
+                    desc: "Studied Introduction to Astrophysics and explored the Bay Area.",
+                    images: ["berkeley.jpg"] // 사진 파일명 수정 필요
+                }
+            ],
+            "2025": [
+                {
+                    title: "NASA Space Apps Challenge",
+                    date: "Oct 2025",
+                    desc: "Won the Tech Innovator Recognition.",
+                    images: ["nasa.jpg"] // 사진 파일명 수정 필요
+                }
+            ],
+            "2026": [
+                {
+                    title: "KASI Internship",
+                    date: "Winter 2026",
+                    desc: "Researching on SPHEREx mission.",
+                    images: ["kasi.jpg"] // 사진 파일명 수정 필요
+                }
+            ]
+        };
+
+        /* ========================
+           3. 갤러리 작동 기능 (건드리지 않으셔도 됩니다)
+           ======================== */
+        function loadYear(year, btnElement) {
+            document.querySelectorAll('.gallery-btn').forEach(b => b.classList.remove('active'));
+            if(btnElement) btnElement.classList.add('active');
+
+            const listContainer = document.getElementById('event-list-container');
+            const detailView = document.getElementById('gallery-detail-view');
+            
+            listContainer.style.display = 'grid';
+            detailView.style.display = 'none';
+            listContainer.innerHTML = ''; 
+
+            const events = galleryData[year];
+            
+            if (!events || events.length === 0) {
+                listContainer.innerHTML = '<div style="color:#aaa;">No photos yet for this year.</div>';
+                return;
+            }
+
+            events.forEach((evt, index) => {
+                const card = document.createElement('div');
+                card.className = 'event-card';
+                card.onclick = () => showDetail(year, index);
+                
+                card.innerHTML = `
+                    <div class="event-title">${evt.title}</div>
+                    <div class="event-date">${evt.date}</div>
+                `;
+                listContainer.appendChild(card);
+            });
+        }
+
+        function showDetail(year, index) {
+            const evt = galleryData[year][index];
+            
+            document.getElementById('event-list-container').style.display = 'none';
+            const detailView = document.getElementById('gallery-detail-view');
+            detailView.style.display = 'block';
+
+            document.getElementById('detail-title').innerText = evt.title;
+            document.getElementById('detail-desc').innerText = evt.desc;
+            
+            const photoContainer = document.getElementById('detail-photos');
+            photoContainer.innerHTML = ''; 
+
+            if(evt.images && evt.images.length > 0) {
+                evt.images.forEach(imgName => {
+                    const img = document.createElement('img');
+                    img.src = imgName; 
+                    img.className = 'photo-item';
+                    img.alt = evt.title;
+                    img.onerror = function() { 
+                        this.style.display='none'; 
+                    };
+                    photoContainer.appendChild(img);
+                });
+            } else {
+                photoContainer.innerHTML = '<div style="color:#aaa;">No photos uploaded.</div>';
+            }
+        }
+
+        function closeDetail() {
+            document.getElementById('event-list-container').style.display = 'grid';
+            document.getElementById('gallery-detail-view').style.display = 'none';
         }
     </script>
 
