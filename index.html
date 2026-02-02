@@ -202,6 +202,55 @@
             .nav-container { flex-direction: column; height: auto; padding: 10px 0; }
             .menu { margin-top: 10px; font-size: 0.9em; gap: 10px; }
         }
+        /* Coursework 전용 스타일 */
+        .semester-block {
+            margin-bottom: 40px;
+        }
+        .semester-title {
+            color: var(--primary-color);
+            border-bottom: 2px solid #eee;
+            padding-bottom: 5px;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+        .course-list {
+            list-style: none;
+            padding: 0;
+        }
+        .course-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px dashed #eee;
+        }
+        .course-info {
+            display: flex;
+            flex-direction: column;
+        }
+        .course-name {
+            font-weight: bold;
+            color: #444;
+        }
+        .course-code {
+            font-size: 0.85em;
+            color: #888;
+        }
+        .pdf-btn {
+            background-color: white;
+            color: var(--accent-color);
+            border: 1px solid var(--accent-color);
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.85em;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+        .pdf-btn:hover {
+            background-color: var(--accent-color);
+            color: white;
+            text-decoration: none;
+        }
     </style>
 </head>
 <body>
@@ -213,6 +262,7 @@
                 <span class="menu-item active" onclick="showPage('home')">About</span>
                 <span class="menu-item" onclick="showPage('education')">Education</span>
                 <span class="menu-item" onclick="showPage('research')">Research</span>
+                <span class="menu-item" onclick="showPage('coursework')">Coursework</span>
                 <span class="menu-item" onclick="showPage('others')">Others</span>
                 <span class="menu-item" onclick="showPage('gallery')">Gallery</span>
             </div>
@@ -308,12 +358,6 @@
             </div>
 
 
-
-
-
-
-            
-
             <div class="item">
                 <div class="item-header">
                     <span class="item-title">International Student Researcher</span>
@@ -328,9 +372,45 @@
                     <li>Served as a Mentor for the Science Internship Program <a href="https://sip.ucsc.edu/" target="_blank">(SIP)</a>, leading a research group of high school interns.</li>
                 </ul>
             </div>
+        </div>
 
+        <div id="coursework" class="page-section">
+            <h2>Coursework</h2>
+            <p>Selected coursework and lecture notes.</p>
 
+            <div class="semester-block">
+                <h3 class="semester-title">Fall 2024</h3>
+                <ul class="course-list">
+                    <li class="course-item">
+                        <div class="course-info">
+                            <span class="course-name">Quantum Mechanics I</span>
+                            <span class="course-code">PH301 | Prof. Name</span>
+                        </div>
+                        <a href="notes/QM1_notes.pdf" class="pdf-btn" target="_blank">View PDF</a>
+                    </li>
+                    <li class="course-item">
+                        <div class="course-info">
+                            <span class="course-name">Mathematical Methods for Physics</span>
+                            <span class="course-code">PH211</span>
+                        </div>
+                        <a href="#" class="pdf-btn" style="opacity: 0.5; cursor: default;">Coming Soon</a>
+                    </li>
+                </ul>
+            </div>
 
+            <div class="semester-block">
+                <h3 class="semester-title">Spring 2024</h3>
+                <ul class="course-list">
+                    <li class="course-item">
+                        <div class="course-info">
+                            <span class="course-name">Electromagnetism I</span>
+                            <span class="course-code">PH231</span>
+                        </div>
+                        <a href="notes/EM1_notes.pdf" class="pdf-btn" target="_blank">View PDF</a>
+                    </li>
+                </ul>
+            </div>
+            
         </div>
 
         <div id="others" class="page-section">
@@ -415,6 +495,7 @@
             const clickedMenuText = pageId === 'home' ? 'About' : 
                                   pageId === 'education' ? 'Education' :
                                   pageId === 'research' ? 'Research' :
+                                  pageId === 'coursework' ? 'Coursework' : 
                                   pageId === 'others' ? 'Others' : 'Gallery';
             
             menuItems.forEach(item => {
