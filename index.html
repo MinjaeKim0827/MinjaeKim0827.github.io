@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Minjae Kim | Astrophysicist</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
             --primary-color: #2c3e50;
@@ -290,6 +291,40 @@
             background-color: #ffd700; color: #555; font-size: 0.8em;
             padding: 3px 8px; border-radius: 15px; font-weight: bold; margin-left: 8px;
         }
+
+        /* 소셜 뱃지 및 액션 버튼 스타일 */
+        .social-links {
+            margin-top: 15px; display: flex; justify-content: center; gap: 15px;
+        }
+        .social-icon {
+            color: #555; font-size: 1.6em; transition: color 0.3s; text-decoration: none;
+        }
+        .social-icon:hover { color: var(--accent-color); transform: scale(1.1); }
+
+        .action-buttons {
+            margin-top: 25px; display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;
+        }
+        .btn-action {
+            display: inline-flex; align-items: center; gap: 8px;
+            background-color: var(--primary-color); color: white;
+            padding: 10px 20px; border-radius: 8px; font-weight: bold; font-size: 0.9em;
+            border: none; cursor: pointer; text-decoration: none; transition: all 0.2s;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .btn-action:hover { background-color: var(--accent-color); transform: translateY(-2px); }
+        
+        .btn-outline { background-color: white; color: var(--primary-color); border: 2px solid var(--primary-color); }
+        .btn-outline:hover { background-color: var(--primary-color); color: white; }
+
+        /* "Copied!" 알림(툴팁) 스타일 */
+        .tooltip { position: relative; }
+        .tooltip .tooltiptext {
+            visibility: hidden; width: 80px; background-color: #333; color: #fff;
+            text-align: center; border-radius: 6px; padding: 5px; position: absolute;
+            z-index: 1; bottom: 130%; left: 50%; margin-left: -40px; font-size: 0.85em;
+            opacity: 0; transition: opacity 0.3s;
+        }
+        .tooltip.show-tooltip .tooltiptext { visibility: visible; opacity: 1; }
     </style>
 </head>
 <body>
@@ -314,11 +349,23 @@
             <div class="profile-header">
                 <img src="Images/MinjaeKimPhoto.jpeg" class="profile-img" alt="Profile Picture">
                 <h1>Minjae Kim (김민재)</h1>
-                <p style="color: #7f8c8d;">Undergraduate Student in Physics at KAIST</p>
-                <div style="margin-top: 15px;">
-                    📧 <a href="mailto:heromj27@kaist.ac.kr" style="color: var(--accent-color); text-decoration: none;">heromj27@kaist.ac.kr</a> | 📍 Daejeon, Korea
+                <p style="color: #7f8c8d;">Undergraduate Student in Physics at KAIST<br>📍 Daejeon, Korea</p>
+
+                <div class="social-links">
+                    <a href="https://linkedin.com/in/" target="_blank" class="social-icon" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/" target="_blank" class="social-icon" title="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="https://orcid.org/" target="_blank" class="social-icon" title="ORCID"><i class="fab fa-orcid"></i></a>
                 </div>
-                <a href="CV_KPS.pdf" download class="btn-download">📄 Download CV (PDF)</a>
+
+                <div class="action-buttons">
+                    <button onclick="copyEmail()" class="btn-action btn-outline tooltip" id="emailBtn">
+                        <i class="fas fa-envelope"></i> Copy Email
+                        <span class="tooltiptext" id="emailTooltip">Copied!</span>
+                    </button>
+                    <a href="CV_KPS.pdf" download class="btn-action">
+                        <i class="fas fa-file-pdf"></i> Download CV
+                    </a>
+                </div>
             </div>
             
             <section>
@@ -336,7 +383,7 @@
                 </p>
                 <p>
                     Currently, I am an undergraduate student researcher in the OBSCAL group at KAIST, investigating cosmology and galaxy evolution through cosmological simulations. 
-                    In parallel, I am probing the formation and early evolution of supermassive black holes at high redshifts ($z > 5$) using data from the SPHEREx mission. 
+                    In parallel, I am probing the formation and early evolution of supermassive black holes at high redshifts (z > 5) using data from the SPHEREx mission. 
                     I plan to graduate in Spring 2027 and pursue a Ph.D. in astrophysics & astronomy. 
                 </p>
             </section>
@@ -443,7 +490,7 @@
                     <span class="item-date">Spring 2025 - Present</span>
                 </div>
                 <span class="item-subtitle" style="line-height: 1.8;">
-                    [Poster Presentation] Korea Physical Society (KPS): Undergraduate Physics Research Competition (Oct 2025) <span class="badge">🏆 Excellent Award</span><br>
+                    [Poster Presentation] Korea Physical Society (KPS): Undergraduate Physics Research Competition (Oct 2025) <br>
                     [Poster Presentation] Korea Physical Society (KPS) Spring Meeting (Apr 2025)<br>
                     [Poster Presentation] Korean Astronomical Society (KAS) Spring Meeting (Apr 2025)
                 </span>
@@ -623,6 +670,23 @@
     </footer>
 
     <script>
+        // 이메일 복사 기능
+        function copyEmail() {
+            const email = "heromj27@kaist.ac.kr";
+            navigator.clipboard.writeText(email).then(() => {
+                const tooltipBtn = document.getElementById("emailBtn");
+                tooltipBtn.classList.add("show-tooltip");
+                // 2초 뒤에 "Copied!" 알림 사라짐
+                setTimeout(() => {
+                    tooltipBtn.classList.remove("show-tooltip");
+                }, 2000);
+            });
+        }
+
+
+
+
+        
         function showPage(pageId) {
             const pages = document.querySelectorAll('.page-section');
             pages.forEach(page => {
