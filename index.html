@@ -251,6 +251,40 @@
             color: white;
             text-decoration: none;
         }
+        /* 새로 추가: CV 버튼, 태그, 뱃지 스타일 */
+        .btn-download {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 15px;
+            transition: background-color 0.2s;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .btn-download:hover { background-color: var(--accent-color); }
+
+        .interest-tags {
+            display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 25px;
+        }
+        .tag {
+            background-color: #e8f4fd; color: var(--accent-color);
+            padding: 6px 15px; border-radius: 20px;
+            font-size: 0.9em; font-weight: 600;
+        }
+
+        .code-link {
+            font-weight: bold; color: #555; text-decoration: none;
+            background: #f0f0f0; padding: 3px 8px; border-radius: 4px; font-size: 0.85em;
+        }
+        .code-link.disabled { opacity: 0.6; cursor: not-allowed; }
+
+        .badge {
+            background-color: #ffd700; color: #555; font-size: 0.8em;
+            padding: 3px 8px; border-radius: 15px; font-weight: bold; margin-left: 8px;
+        }
     </style>
 </head>
 <body>
@@ -269,8 +303,7 @@
         </div>
     </nav>
 
-    <div class="container">
-        <div id="home" class="page-section active">
+    <div id="home" class="page-section active">
             <div class="profile-header">
                 <img src="Images/MinjaeKimPhoto.jpeg" class="profile-img" alt="Profile Picture">
                 <h1>Minjae Kim (김민재)</h1>
@@ -278,8 +311,18 @@
                 <div style="margin-top: 15px;">
                     📧 <a href="mailto:heromj27@kaist.ac.kr" style="color: var(--accent-color); text-decoration: none;">heromj27@kaist.ac.kr</a> | 📍 Daejeon, Korea
                 </div>
+                <a href="CV_KPS.pdf" download class="btn-download">📄 Download CV (PDF)</a>
             </div>
+            
             <section>
+                <h2>Research Interests</h2>
+                <div class="interest-tags">
+                    <span class="tag">Cosmology & High-Redshift Universe</span>
+                    <span class="tag">Time-Domain Astronomy & SPHEREx</span>
+                    <span class="tag">Computational Astrophysics</span>
+                    <span class="tag">Machine Learning Pipelines</span>
+                </div>
+
                 <h2>About Me</h2>
                 <p>
                     Hello! I'm Minjae Kim, an undergraduate student in physics at KAIST. 
