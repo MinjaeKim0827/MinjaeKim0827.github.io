@@ -187,18 +187,19 @@
             font-weight: bold;
             display: inline-block;
         }
+        /* 갤러리 상세 사진 그리드 (비율 유지형) */
         .photo-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 10px;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* 사진 최소 너비를 살짝 넓힘 */
+            gap: 15px;
             margin-top: 15px;
+            align-items: start; /* 높이가 달라도 위쪽 기준으로 정렬 */
         }
         .photo-item {
             width: 100%;
-            aspect-ratio: 1/1;
-            object-fit: cover;
+            height: auto; /* ★ 높이를 자동으로 조절하여 원본 비율 유지 */
             border-radius: 8px;
-            background: #eee;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.1); /* 사진에 살짝 그림자 추가 (선택) */
         }
         
         /* 모바일 대응 */
@@ -832,9 +833,9 @@
                 {
                     title: "KAS Spring Meeting",
                     date: "Spring 2025",
-                    desc: "Attended the Korean Astronomical Society (KAS) Spring Meeting. ",
+                    desc: "Attended the Korean Astronomical Society (KAS) and Korean Physical Society (KPS) Spring Meeting. Won the outstanding presentation award at KPS. ",
                     // 🚨 KAS_Spring.heic를 jpg로 변환 후 넣어주세요.
-                    images: ["Images/KAS_Spring.jpg"]
+                    images: ["Images/KAS_Spring.jpg","Images/KPS_Spring.jpg"]
                 },
                 {
                     title: "With ObsCAL Members",
@@ -855,7 +856,7 @@
                     date: "Oct 2025",
                     desc: "Presented the Circumgalactic Medium (CGM) study and won the Excellent Award at the Korea Physical Society (KPS) undergraduate physics competition.",
                     // KPS 사진들을 모았습니다.
-                    images: ["Images/KPS_Fall.jpg", "Images/KPS_Fall2.jpg"] 
+                    images: ["Images/KPS_Fall_poster.jpg", "Images/KPS_Fall2.jpg"] 
                 }
             ],
             "2026": [
