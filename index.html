@@ -352,37 +352,42 @@
             min-width: 80px;
         }
         .news-text { color: #444; }
-
     /* =========================================
-           🖨️ 인쇄/PDF 저장 최적화 모드 (Ctrl + P)
+           🖨️ 인쇄/PDF 저장 최적화 모드 (강력 버전)
            ========================================= */
         @media print {
-            /* 1. 불필요한 웹용 UI 숨기기 (메뉴바, 버튼, 그림자 등) */
-            nav, .btn-download, .action-buttons, .gallery-nav, footer {
+            /* 1. 웹용 레이아웃 족쇄 풀기 (가장 중요!) */
+            html, body, .container {
+                display: block !important;
+                height: auto !important;
+                min-height: auto !important;
+                overflow: visible !important;
+                margin: 0 !important;
+                padding: 0 !important;
+                width: 100% !important;
+            }
+
+            /* 2. 불필요한 웹용 UI 숨기기 */
+            nav, .action-buttons, .gallery-nav, footer {
                 display: none !important;
             }
 
-            /* 2. 숨겨진 탭 모두 펼치기 (모든 섹션이 한 번에 인쇄되도록) */
+            /* 3. 숨겨진 모든 탭 강제 소환 (백지 현상 해결) */
             .page-section {
                 display: block !important;
-                page-break-inside: avoid; /* 내용이 중간에 잘리지 않게 함 */
+                visibility: visible !important;
+                opacity: 1 !important;
+                animation: none !important; /* 애니메이션 제거 */
+                position: relative !important;
             }
 
-            /* 3. 배경색 지우고 흰 종이처럼 깔끔하게 */
-            body {
-                background-color: white !important;
-                color: black !important;
-                margin: 0;
-            }
-
-            /* 4. 링크 스타일 정리 (밑줄 제거) */
-            a { text-decoration: none !important; color: #000 !important; }
-
-            /* 5. 각 섹션마다 페이지 나누기 (깔끔한 레이아웃) */
+            /* 4. 각 탭마다 새로운 페이지에서 시작하도록 나누기 */
             #education, #research, #coursework, #others, #gallery {
                 page-break-before: always;
-                padding-top: 20px;
             }
+
+            /* 5. 링크 스타일 검정색으로 통일 */
+            a { text-decoration: none !important; color: #000 !important; }
         }
     </style>
 </head>
