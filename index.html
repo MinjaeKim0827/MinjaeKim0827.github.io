@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Minjae Kim | Astrophysicist</title>
+    <title>Minjae Kim | Astrophysics</title>
+    <meta name="description" content="Minjae Kim — physics undergraduate at KAIST studying the hot circumgalactic medium in IllustrisTNG and SPHEREx spectroscopy of z > 5 quasars. Applying to astronomy & astrophysics Ph.D. programs for Fall 2027.">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
@@ -96,8 +97,18 @@
         h2 { border-bottom: 2px solid var(--accent-color); padding-bottom: 10px; margin-top: 0; color: var(--primary-color); }
         
         .profile-header { text-align: center; margin-bottom: 40px; }
+        .profile-sub { color: #7f8c8d; margin: 0 0 6px; }
+        .profile-status {
+            display: inline-block;
+            margin-top: 6px;
+            background-color: #e8f4fd;
+            color: var(--primary-color);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 600;
+        }
         
-        /* 새로 추가할 스타일 */
         .profile-img {
             width: 150px;
             height: 150px;
@@ -110,10 +121,25 @@
         
         .item { margin-bottom: 25px; border-bottom: 1px solid #eee; padding-bottom: 15px; }
         .item:last-child { border-bottom: none; }
-        .item-header { display: flex; justify-content: space-between; flex-wrap: wrap; margin-bottom: 5px; }
+        .item-header { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 4px 12px; margin-bottom: 5px; }
         .item-title { font-weight: bold; font-size: 1.1em; color: var(--primary-color); }
         .item-date { color: #7f8c8d; font-style: italic; }
         .item-subtitle { color: #555; margin-bottom: 8px; display: block; }
+
+        /* 연구 핵심 결과 강조 박스 */
+        .key-result {
+            background-color: #f0f8ff;
+            border-left: 3px solid var(--accent-color);
+            padding: 8px 14px;
+            margin: 10px 0;
+            border-radius: 4px;
+            font-size: 0.95em;
+        }
+
+        /* 논문 목록 */
+        .pub-list { padding-left: 20px; margin-top: 0; }
+        .pub-list li { margin-bottom: 12px; }
+        .pub-status { color: #7f8c8d; font-style: italic; }
         
         /* 사진관 스타일 */
         .gallery-grid {
@@ -205,7 +231,10 @@
         /* 모바일 대응 */
         @media (max-width: 600px) {
             .nav-container { flex-direction: column; height: auto; padding: 10px 0; }
-            .menu { margin-top: 10px; font-size: 0.9em; gap: 10px; }
+            .menu { margin-top: 10px; font-size: 0.9em; gap: 6px; flex-wrap: wrap; justify-content: center; }
+            .menu-item { padding: 4px 8px; }
+            .container { margin: 25px auto; }
+            .news-item { flex-direction: column; gap: 2px; }
         }
         
         /* Coursework 전용 스타일 */
@@ -227,6 +256,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            gap: 12px;
             padding: 10px 0;
             border-bottom: 1px dashed #eee;
         }
@@ -250,6 +280,7 @@
             border-radius: 15px;
             font-size: 0.85em;
             text-decoration: none;
+            white-space: nowrap;
             transition: all 0.2s;
         }
         .pdf-btn:hover {
@@ -258,7 +289,7 @@
             text-decoration: none;
         }
         
-        /* 새로 추가: CV 버튼, 태그, 뱃지 스타일 */
+        /* CV 버튼, 태그, 뱃지 스타일 */
         .btn-download {
             display: inline-block;
             background-color: var(--primary-color);
@@ -332,7 +363,7 @@
             border: 1px solid #ddd;
             border-radius: 8px;
             padding: 15px 20px;
-            max-height: 200px; /* 박스 높이 제한 */
+            max-height: 260px; /* 박스 높이 제한 */
             overflow-y: auto;  /* 내용이 넘치면 스크롤 생성 */
             background-color: white;
             margin-bottom: 30px;
@@ -350,9 +381,14 @@
         .news-date {
             font-weight: bold;
             color: var(--accent-color);
-            min-width: 80px;
+            min-width: 105px;
+            flex-shrink: 0;
         }
         .news-text { color: #444; }
+
+        /* 방문자 카운터 */
+        .visitor-badge img { vertical-align: middle; }
+
     /* =========================================
            🖨️ 인쇄/PDF 저장 최적화 모드 (강력 버전)
            ========================================= */
@@ -410,16 +446,21 @@
 
     <div class="container">
 
+        <!-- ===================== ABOUT ===================== -->
         <div id="home" class="page-section active">
             <div class="profile-header">
-                <img src="Images/MinjaeKimPhoto.jpeg" class="profile-img" alt="Profile Picture">
+                <img src="Images/MinjaeKimPhoto.jpeg" class="profile-img" alt="Profile picture of Minjae Kim">
                 <h1>Minjae Kim (김민재)</h1>
-                <p style="color: #7f8c8d;">Undergraduate Student in Physics at KAIST<br> heromj27@kaist.ac.kr📍Daejeon, Korea</p>
+                <p class="profile-sub">
+                    B.S. in Physics (Minor in Electrical Engineering), KAIST &middot; Expected Feb 2027<br>
+                    heromj27@kaist.ac.kr &middot; 📍 Daejeon, Korea
+                </p>
+                <span class="profile-status">Applying to Ph.D. programs in Astronomy &amp; Astrophysics for Fall 2027</span>
 
                 <div class="social-links">
-                    <a href="https://www.linkedin.com/in/minjae-kim-a893ba316" target="_blank" class="social-icon" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                    <a href="https://github.com/MinjaeKim0827" target="_blank" class="social-icon" title="GitHub"><i class="fab fa-github"></i></a>
-                    <a href="https://orcid.org/0009-0008-5027-8066" target="_blank" class="social-icon" title="ORCID"><i class="fab fa-orcid"></i></a>
+                    <a href="https://www.linkedin.com/in/minjae-kim-a893ba316" target="_blank" rel="noopener" class="social-icon" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/MinjaeKim0827" target="_blank" rel="noopener" class="social-icon" title="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="https://orcid.org/0009-0008-5027-8066" target="_blank" rel="noopener" class="social-icon" title="ORCID"><i class="fab fa-orcid"></i></a>
                 </div>
 
                 <div class="action-buttons">
@@ -427,8 +468,8 @@
                         <i class="fas fa-envelope"></i> Copy Email
                         <span class="tooltiptext" id="emailTooltip">Copied!</span>
                     </button>
-                    <a href="notes/MinjaeKim_CV.pdf" download class="btn-action">
-                        <i class="fas fa-file-pdf"></i> Download CV
+                    <a href="notes/MinjaeKim_CV.pdf" target="_blank" rel="noopener" class="btn-action">
+                        <i class="fas fa-file-pdf"></i> CV (PDF)
                     </a>
                 </div>
             </div>
@@ -436,140 +477,242 @@
             <section>
                 <h2>Research Interests</h2>
                 <div class="interest-tags">
-                    <span class="tag">Cosmology & High-Redshift Universe</span>
-                    <span class="tag">Galaxy Formation & Evolution</span>
-                    <span class="tag">Computational Astrophysics : Simulation & Machine Learning, Causal Inference</span>
+                    <span class="tag">Circumgalactic Medium &amp; Hot Halo Gas</span>
+                    <span class="tag">Galaxy Evolution, Feedback &amp; Quenching</span>
+                    <span class="tag">High-Redshift Quasars &amp; Black Hole Growth</span>
+                    <span class="tag">Survey Spectroscopy (SPHEREx)</span>
+                    <span class="tag">X-ray &amp; Near-Infrared Diagnostics</span>
+                    <span class="tag">Connecting Simulations with Observations</span>
                 </div>
 
                 <h2>About Me</h2>
                 <p>
-                    Hello! I'm Minjae Kim, an undergraduate student in physics at KAIST. 
-                    My research focus lies in astrophysics, particularly in understanding the physical processes that govern the structure and evolution of the universe.
+                    I am a physics undergraduate at KAIST (B.S. expected February 2027, minor in Electrical Engineering).
+                    I originally set out to work on solid-state physics and electronic devices, but an introductory
+                    astrophysics course at UC Berkeley in the summer of 2024 changed my direction, and I joined
+                    <a href="https://junhank.github.io/" target="_blank" rel="noopener">Prof. Junhan Kim</a>'s OBSCAL group at KAIST that August.
                 </p>
                 <p>
-                    Currently, I am an undergraduate student researcher in the OBSCAL group at KAIST, investigating cosmology and galaxy evolution through cosmological simulations. 
-                    In parallel, I am probing the formation and early evolution of supermassive black holes at high redshifts (z > 5) using data from the SPHEREx mission. 
-                    I plan to graduate in Spring 2027 and pursue a Ph.D. in astrophysics & astronomy. 
+                    Since then I have pursued two complementary questions about how galaxies and their black holes grow:
+                </p>
+                <ul>
+                    <li><strong>The hot circumgalactic medium.</strong> Using the IllustrisTNG cosmological simulations, I model the intrinsic soft X-ray emission
+                        of hot gas around galaxies to understand how feedback reshapes it as galaxies stop forming stars.</li>
+                    <li><strong>The earliest luminous quasars.</strong> On the SPHEREx team at KASI, I am building a spectral-fitting pipeline
+                        for SPHEREx's low-resolution near-infrared spectra to measure the rest-frame optical properties of luminous quasars at <em>z</em> &gt; 5.</li>
+                </ul>
+                <p>
+                    I am applying to Ph.D. programs in astronomy &amp; astrophysics for Fall 2027. My long-term goal is to become an
+                    observational astronomer who works across observations, simulations, and instrumentation.
                 </p>
             </section>
 
             <section>
                 <h2>Recent News</h2>
                 <div class="news-container">
+                    <!--
+                      새 소식 추가 템플릿 (맨 위에 붙여넣기):
+                      <div class="news-item">
+                          <span class="news-date">Oct 2026</span>
+                          <span class="news-text">Submitted my first-author paper on the hot CGM in IllustrisTNG to ApJ (arXiv:XXXX.XXXXX).</span>
+                      </div>
+                      <div class="news-item">
+                          <span class="news-date">Oct 2026</span>
+                          <span class="news-text">Presented ... at the Korean Astronomical Society (KAS) Fall Meeting.</span>
+                      </div>
+                    -->
                     <div class="news-item">
-                        <span class="news-date">Feb 2026</span>
-                        <span class="news-text">Created my academic website! 🎉</span>
+                        <span class="news-date">Oct 2026</span>
+                        <span class="news-text">Applying to astronomy &amp; astrophysics Ph.D. programs for Fall 2027. Feel free to reach out!</span>
+                    </div>
+                    <div class="news-item">
+                        <span class="news-date">Aug 2026</span>
+                        <span class="news-text">Gave an oral talk on SPHEREx spectra of <em>z</em> &gt; 5 quasars at the <strong>KAIST–KASI Network Meeting</strong>; attended the SKA Korea Summer Workshop and the KASI Radio Summer School.</span>
+                    </div>
+                    <div class="news-item">
+                        <span class="news-date">Jun–Jul 2026</span>
+                        <span class="news-text">Took part in the <strong>CERN Korean Summer Student Program</strong>, studying dark matter freeze-out and freeze-in in the Higgs-portal scalar singlet model.</span>
+                    </div>
+                    <div class="news-item">
+                        <span class="news-date">May 2026</span>
+                        <span class="news-text">Gave an oral talk at the <strong>SPHEREx Regional Meeting</strong> and presented my CGM X-ray poster at <strong>APRIM 2026</strong> in Hong Kong.</span>
+                    </div>
+                    <div class="news-item">
+                        <span class="news-date">Spring 2026</span>
+                        <span class="news-text">Received the <strong>Best Tutor Award</strong> from the KAIST Freshman Tutoring Program.</span>
+                    </div>
+                    <div class="news-item">
+                        <span class="news-date">Spring 2026</span>
+                        <span class="news-text">Presented at the KPS Spring Meeting (oral), the KAS Spring Meeting (poster), and the Korea Astronomy Machine Learning (KAML) Meeting (oral).</span>
                     </div>
                     <div class="news-item">
                         <span class="news-date">Jan 2026</span>
-                        <span class="news-text">Started working as a Winter Research Intern at KASI, focusing on SPHEREx data analysis.</span>
+                        <span class="news-text">Joined the SPHEREx team at KASI through the KASI–UST Winter Internship; continuing as a part-time research assistant.</span>
                     </div>
                     <div class="news-item">
                         <span class="news-date">Jan 2026</span>
-                        <span class="news-text">My high school mentee from the UCSC SIP successfully presented our research at the <strong>247th AAS Meeting</strong>. Very proud!</span>
+                        <span class="news-text">Our M32 kinematics project from UC Santa Cruz was presented at the <strong>247th AAS Meeting</strong> by my high school mentee, with me as a co-author.</span>
+                    </div>
+                    <div class="news-item">
+                        <span class="news-date">Dec 2025</span>
+                        <span class="news-text">Selected for KAIST follow-up research support (Dec 2025 – Jun 2026) in recognition of my CGM research.</span>
                     </div>
                     <div class="news-item">
                         <span class="news-date">Oct 2025</span>
-                        <span class="news-text">Won the <strong>Excellent Awards</strong> at the KPS undergraduate physics research competition & KAIST URP for CGM research.</span>
+                        <span class="news-text">Won <strong>Excellent Awards</strong> at the KPS Undergraduate Physics Research Competition and the KAIST URP for my CGM research.</span>
                     </div>
                     <div class="news-item">
                         <span class="news-date">Oct 2025</span>
-                        <span class="news-text">Won the <strong>Tech Innovator Recognition</strong> at NASA Space Apps Challenge, Seoul.</span>
+                        <span class="news-text">Received the <strong>Tech Innovator Recognition</strong> at the NASA Space Apps Challenge, Seoul.</span>
                     </div>
                 </div>
             </section>
         </div>
 
+        <!-- ===================== EDUCATION ===================== -->
         <div id="education" class="page-section">
             <h2>Education</h2>
             <div class="item">
                 <div class="item-header">
                     <span class="item-title">Korea Advanced Institute of Science and Technology (KAIST)</span>
-                    <span class="item-date">2020 - Present</span>
+                    <span class="item-date">2020 – Feb 2027 (expected)</span>
                 </div>
                 <span class="item-subtitle">B.S. in Physics, Minor in Electrical Engineering</span>
                 <ul>
-                    <li>Cumulative GPA: 3.90 / 4.3 (Major: 3.96 / 4.3)</li>
+                    <li>Cumulative GPA: 3.95 / 4.30 (Major: 3.97 / 4.30)</li>
+                    <li>Upper-Division GPA: 4.14 / 4.30 (Major: 4.10 / 4.30)</li>
+                    <li>Departmental Honor Scholarship &amp; Dean's List, Department of Physics (Spring &amp; Fall 2025)</li>
+                    <li>Leave of absence for mandatory military service, Republic of Korea Army (Jan 2022 – Jul 2023)</li>
                 </ul>
             </div>
 
             <div class="item">
                 <div class="item-header">
-                    <span class="item-title">Summer Exchange Student</span>
+                    <span class="item-title">University of California, Berkeley</span>
                     <span class="item-date">Summer 2024</span>
                 </div>
-                <span class="item-subtitle">UC Berkeley Summer Session</span>
+                <span class="item-subtitle">Summer Exchange Student</span>
                 <ul>
-                    <li>Completed coursework in Introduction to Astrophysics during the summer session.</li>
+                    <li>Completed Introduction to Astrophysics, the course that first drew me into astronomy.</li>
                 </ul>
             </div>
 
             <div class="item">
                 <div class="item-header">
                     <span class="item-title">Jeonnam Science High School</span>
-                    <span class="item-date">2018 - 2019</span>
+                    <span class="item-date">2018 – 2019</span>
                 </div>
                 <span class="item-subtitle">Early Graduation (Ranked 2nd in School)</span>
             </div>
         </div>
 
+        <!-- ===================== RESEARCH ===================== -->
         <div id="research" class="page-section">
             <h2>Research</h2>
+
             <div class="item">
                 <div class="item-header">
-                    <span class="item-title">Undergraduate Researcher (OBSCAL)</span>
-                    <span class="item-date">Fall 2024 - Present</span>
+                    <span class="item-title">Intrinsic Soft X-ray Emission from the Hot Circumgalactic Medium in IllustrisTNG</span>
+                    <span class="item-date">Aug 2024 – Present</span>
                 </div>
-                <span class="item-subtitle">KAIST | Advised by <a href="https://junhank.github.io/" target="_blank">Prof. Junhan Kim</a></span>
+                <span class="item-subtitle">OBSCAL Group, KAIST &middot; Advisor: <a href="https://junhank.github.io/" target="_blank" rel="noopener">Prof. Junhan Kim</a></span>
                 <ul>
-                    <li>Project: Probing Hot gas Components of Circumgalactic Medium Through X-ray signatures.</li>
-                    <li>Participating in KAIST Undergraduate Research Program (URP) (Spring 2025).</li>
-                    <li>Follow-up research currently in progress, focusing on machine learning–based causal inference.</li>
+                    <li>Modeling the intrinsic soft X-ray emission of hot circumgalactic gas in the IllustrisTNG cosmological simulations, with emissivities computed using pyatomdb/APEC.</li>
+                    <li>Fitting X-ray scaling relations with MCMC (emcee), including intrinsic scatter, and testing the L<sub>X</sub>–SFR relation across galaxy populations with partial-correlation analysis.</li>
+                </ul>
+                <div class="key-result">
+                    <strong>Key finding:</strong> quiescent galaxies show no true deficit in hot-gas content or thermal energy relative to
+                    star-forming galaxies. Their hot gas is redistributed to larger radii rather than expelled, which lowers the
+                    X-ray luminosity by about an order of magnitude.
+                </div>
+                <ul>
+                    <li>Began through the KAIST Undergraduate Research Program (URP, Spring 2025); received the URP Excellent Award and was selected for follow-up research support (Dec 2025 – Jun 2026).</li>
+                    <li>First-author paper in preparation for submission to ApJ.</li>
                 </ul>
             </div>
 
             <div class="item">
                 <div class="item-header">
-                    <span class="item-title">KASI Research Intern (SPHEREx team)</span>
-                    <span class="item-date">Winter 2026 - Present</span>
-                </div>
-                <span class="item-subtitle">
-                    Korea Astronomy and Space Science Institute (KASI) | Advised by <a href="https://www.linkedin.com/in/bomee-lee-62269569/" target="_blank">Dr. Bomee Lee</a> & Dr. Woong-Seob Jeong
-                </span>
-                <ul>
-                    <li>Conducting spectral analysis of Quasars with very high redshift (z > 5) through the SPHEREx survey results.</li>
-                    <li>Developing Python-based automated fitting pipelines to identify spectral peaks and analyze physical properties by statistical approach.</li>
-                    <li>Working under the supervision of Dr. Bomee Lee in the research group led by Dr. Woong-Seob Jeong.</li>
-                </ul>
-            </div>
-
-            <div class="item">
-                <div class="item-header">
-                    <span class="item-title">International Student Researcher</span>
-                    <span class="item-date">Summer 2025 - Winter 2025 </span>
+                    <span class="item-title">Spectral Analysis of High-Redshift (<em>z</em> &gt; 5) Quasars with SPHEREx</span>
+                    <span class="item-date">Jan 2026 – Present</span>
                 </div>
                 <span class="item-subtitle">
-                    UC Santa Cruz | Advised by <a href="https://crest.ucsc.edu/raja-guhathakurta/" target="_blank">Prof. Puragra Guha Thakurta</a>
+                    SPHEREx Team, Korea Astronomy and Space Science Institute (KASI) &middot; Supervisors:
+                    <a href="https://www.linkedin.com/in/bomee-lee-62269569/" target="_blank" rel="noopener">Dr. Bomee Lee</a> &amp; Dr. Woong-Seob Jeong
                 </span>
                 <ul>
-                    <li>Participated in UC Santa Cruz International Summer Research Program <a href="https://global.ucsc.edu/visiting-students/isrp/" target="_blank">(ISRP) </a>.</li>
-                    <li>Project: Kinematical Analysis of M32 - A Comparative Study of Serendipitously Observed Versus Targeted Stars and Assessment of Spectral Blending.</li>
-                    <li>Served as a Mentor for the Science Internship Program <a href="https://sip.ucsc.edu/" target="_blank">(SIP)</a>, leading a research group of high school interns.</li>
+                    <li>Started through the KASI–UST Winter Internship (Jan–Feb 2026); continuing as a part-time research assistant, with contract reappointment across multiple terms.</li>
+                    <li>Developing a Python pipeline for SPHEREx's low-resolution (R ≈ 35–130) spectra: sample compilation and source matching, instrument characterization, forward-modeled SED fitting with dust-reddening correction, and SED analysis.</li>
+                    <li>Identifying spectral features and deriving the physical properties of the quasars with statistical methods.</li>
+                    <li>First-author manuscript in progress with Dr. Bomee Lee.</li>
                 </ul>
             </div>
 
-            
+            <div class="item">
+                <div class="item-header">
+                    <span class="item-title">Kinematical Analysis of M32: Serendipitous versus Targeted Stars</span>
+                    <span class="item-date">Summer – Winter 2025</span>
+                </div>
+                <span class="item-subtitle">
+                    UC Santa Cruz, International Summer Research Program (<a href="https://global.ucsc.edu/visiting-students/isrp/" target="_blank" rel="noopener">ISRP</a>) &middot;
+                    Advisor: <a href="https://crest.ucsc.edu/raja-guhathakurta/" target="_blank" rel="noopener">Prof. Puragra (Raja) GuhaThakurta</a>
+                </span>
+                <ul>
+                    <li>Compared the kinematics of serendipitously observed and targeted stars around M32 and assessed the effect of spectral blending.</li>
+                    <li>Led the project while mentoring three high school interns in the Science Internship Program (<a href="https://sip.ucsc.edu/" target="_blank" rel="noopener">SIP</a>); the results were presented at the 247th AAS Meeting (Jan 2026) by my mentee, with me as a co-author.</li>
+                </ul>
+            </div>
+
+            <br>
+            <h2>Manuscripts</h2>
+            <ol class="pub-list">
+                <li>
+                    <strong>M. Kim</strong> and J. Kim, "Intrinsic Soft X-ray Emission from the Hot Circumgalactic Medium in IllustrisTNG,"
+                    <span class="pub-status">in preparation (2026).</span>
+                </li>
+                <li>
+                    <strong>M. Kim</strong> and B. Lee, "SPHEREx Near-Infrared Spectrophotometric View of Luminous Quasars at <em>z</em> &gt; 5:
+                    Rest-Frame Optical Properties and Physical Implications,"
+                    <span class="pub-status">in preparation (2026).</span>
+                </li>
+            </ol>
+
             <br>
             <h2>Presentations</h2>
-            
+
             <div class="item">
                 <div class="item-header">
-                    <span class="item-title" style="color:#333;">Spectral Analysis and Automated Fitting Pipeline for High-Redshift Quasars using SPHEREx Data</span>
-                    <span class="item-date">Winter 2026</span>
+                    <span class="item-title" style="color:#333;">SPHEREx Near-Infrared Spectrophotometric View of Luminous Quasars at <em>z</em> &gt; 5</span>
+                    <span class="item-date">May &amp; Aug 2026</span>
                 </div>
-                <span class="item-subtitle">[Oral Presentation]KASI Winter Internship Seminar / KAS Spring Meeting 2026</span>
+                <span class="item-subtitle" style="line-height: 1.8;">
+                    [Oral] SPHEREx Regional Meeting (May 2026)<br>
+                    [Oral] KAIST–KASI Network Meeting (Aug 2026)
+                </span>
+            </div>
+
+            <div class="item">
+                <div class="item-header">
+                    <span class="item-title" style="color:#333;">Probing Hot Gas Components of the Circumgalactic Medium through X-ray Signatures</span>
+                    <span class="item-date">Spring 2026</span>
+                </div>
+                <span class="item-subtitle" style="line-height: 1.8;">
+                    [Oral] Korean Physical Society (KPS) Spring Meeting 2026<br>
+                    [Poster] Asia-Pacific Regional IAU Meeting (APRIM 2026), Hong Kong (May 2026)
+                </span>
+            </div>
+
+            <div class="item">
+                <div class="item-header">
+                    <span class="item-title" style="color:#333;">Spectral Analysis for High-Redshift Quasars using SPHEREx Data</span>
+                    <span class="item-date">Winter – Spring 2026</span>
+                </div>
+                <span class="item-subtitle" style="line-height: 1.8;">
+                    [Oral] KASI Winter Internship Seminar<br>
+                    [Poster] Korean Astronomical Society (KAS) Spring Meeting 2026
+                </span>
                 <div style="margin-top: 8px;">
-                    <a href="notes/MinjaeKim_UST(KASI).pdf" target="_blank" style="text-decoration:none; font-size:0.9em; font-weight:bold; color:var(--accent-color);">
+                    <a href="notes/MinjaeKim_UST(KASI).pdf" target="_blank" rel="noopener" style="text-decoration:none; font-size:0.9em; font-weight:bold; color:var(--accent-color);">
                         📄 View Presentation Slides (PDF)
                     </a>
                 </div>
@@ -577,20 +720,25 @@
 
             <div class="item">
                 <div class="item-header">
-                    <span class="item-title" style="color:#333;">Probing Hot gas Components of Circumgalactic Medium Through X-ray Signatures</span>
-                    <span class="item-date">Spring 2025 - Present</span>
+                    <span class="item-title" style="color:#333;">A Preliminary Machine-Learning-Based Causal Inference Approach for CGM Research</span>
+                    <span class="item-date">Spring 2026</span>
+                </div>
+                <span class="item-subtitle">[Oral] Korea Astronomy Machine Learning (KAML) Meeting</span>
+            </div>
+
+            <div class="item">
+                <div class="item-header">
+                    <span class="item-title" style="color:#333;">Probing Hot Gas Components of the Circumgalactic Medium through X-ray Signatures</span>
+                    <span class="item-date">Spring – Fall 2025</span>
                 </div>
                 <span class="item-subtitle" style="line-height: 1.8;">
-                    [Poster Presentation] Korea Physical Society (KPS): Undergraduate Physics Research Competition (Oct 2025) <br>
-                    [Poster Presentation] Korea Physical Society (KPS) Spring Meeting (Apr 2025)<br>
-                    [Poster Presentation] Korean Astronomical Society (KAS) Spring Meeting (Apr 2025)
+                    [Poster] KPS Undergraduate Physics Research Competition (Oct 2025) — <strong>Excellent Award</strong><br>
+                    [Oral] KAIST URP Final Presentation (Fall 2025) — <strong>Excellent Award</strong><br>
+                    [Poster] KPS Spring Meeting (Apr 2025) — <strong>Outstanding Presentation Award</strong><br>
+                    [Poster] Korean Astronomical Society (KAS) Spring Meeting (Apr 2025)
                 </span>
-                <ul style="margin-top: 5px; margin-bottom: 5px;">
-                    <li><strong>Progression:</strong> Initially presented at KPS & KAS Spring 2025 meetings; further developed and awarded at KPS Fall 2025.</li>
-                    <li><strong>Upcoming:</strong> will present at <strong>APRIM 2026 (Hong Kong)</strong>. (Comming soon)</li>
-                </ul>
                 <div style="margin-top: 8px;">
-                    <a href="notes/KPS_Fall_Poster_file.pdf" target="_blank" style="text-decoration:none; font-size:0.9em; font-weight:bold; color:var(--accent-color);">
+                    <a href="notes/KPS_Fall_Poster_file.pdf" target="_blank" rel="noopener" style="text-decoration:none; font-size:0.9em; font-weight:bold; color:var(--accent-color);">
                         📄 View Fall 2025 Poster (PDF)
                     </a>
                 </div>
@@ -598,19 +746,20 @@
 
             <div class="item">
                 <div class="item-header">
-                    <span class="item-title" style="color:#333;">Kinematical Analysis of M32 - A Comparative Study of Serendipitously Observed Versus Targeted Stars and Assessment of Spectral Blending</span>
+                    <span class="item-title" style="color:#333;">Kinematical Analysis of M32: Serendipitous versus Targeted Stars</span>
                     <span class="item-date">Summer 2025</span>
                 </div>
-                <span class="item-subtitle">[Oral Presentation] UC Santa Cruz SIP Symposium</span>
+                <span class="item-subtitle">[Oral] UC Santa Cruz SIP Symposium — presented by my mentee group under my supervision</span>
                 <div style="margin-top: 8px;">
-                    <a href="notes/AST-06 Presentation.pdf" target="_blank" style="text-decoration:none; font-size:0.9em; font-weight:bold; color:var(--accent-color);">
-                        📄 View Presentation Slides
+                    <a href="notes/AST-06 Presentation.pdf" target="_blank" rel="noopener" style="text-decoration:none; font-size:0.9em; font-weight:bold; color:var(--accent-color);">
+                        📄 View Presentation Slides (PDF)
                     </a>
                 </div>
             </div>
 
         </div>
 
+        <!-- ===================== COURSEWORK ===================== -->
         <div id="coursework" class="page-section">
             <h2>Coursework</h2>
             <p>Selected coursework and lecture notes.</p>
@@ -622,10 +771,10 @@
                             <span class="course-name">Machine Learning Basics and Practice</span>
                             <span class="course-code">Prof. Jaekyun Moon</span>
                             <span style="font-size: 0.8em; color: #666; margin-top: 2px;">
-                                Focus: Supervised/Unsupervised Learning, Neural Networks, CNN, Generative Model, Attention, Reinforce Learning
+                                Focus: Supervised/Unsupervised Learning, Neural Networks, CNNs, Generative Models, Attention, Reinforcement Learning
                             </span>
                         </div>
-                        <a href="#" class="pdf-btn" style="opacity: 0.5; cursor: default;">Coming Soon</a>
+                        <a href="#" class="pdf-btn" style="opacity: 0.5; cursor: default;" onclick="return false;">Coming Soon</a>
                     </li>
                 </ul>
             </div>
@@ -637,7 +786,7 @@
                             <span class="course-name">Radio Astronomy</span>
                             <span class="course-code">Prof. Junhan Kim</span>
                         </div>
-                        <a href="notes/Radio Astronomy.pdf" class="pdf-btn" target="_blank">View PDF</a>
+                        <a href="notes/Radio Astronomy.pdf" class="pdf-btn" target="_blank" rel="noopener">View PDF</a>
                     </li>
                     <li class="course-item">
                         <div class="course-info">
@@ -647,7 +796,7 @@
                                 Focus: Drude Model, Sommerfeld Theory, Tight-Binding Model, Graphene
                             </span>
                         </div>
-                        <a href="#" class="pdf-btn" style="opacity: 0.5; cursor: default;">Coming Soon</a>
+                        <a href="#" class="pdf-btn" style="opacity: 0.5; cursor: default;" onclick="return false;">Coming Soon</a>
                     </li>
                 </ul>
             </div>
@@ -660,10 +809,10 @@
                             <span class="course-name">Astrophysics</span>
                             <span class="course-code">Prof. Junhan Kim</span>
                             <span style="font-size: 0.8em; color: #666; margin-top: 2px;">
-                                Focus: Celestial Mechanics with Dark Matter, Equilibrium in stars & structure and evolution, Astrophysical Processes (synchrotron radiation, Bremsstrahlung, etc)
+                                Focus: Celestial Mechanics with Dark Matter, Stellar Equilibrium, Structure &amp; Evolution, Radiative Processes (Synchrotron, Bremsstrahlung, etc.)
                             </span>
                         </div>
-                        <a href="notes/Astrophysics.pdf" class="pdf-btn" target="_blank">View PDF</a>
+                        <a href="notes/Astrophysics.pdf" class="pdf-btn" target="_blank" rel="noopener">View PDF</a>
                     </li>
                     <li class="course-item">
                         <div class="course-info">
@@ -673,7 +822,7 @@
                                 Focus: Central Limit Theorem, Entropy
                             </span>
                         </div>
-                        <a href="notes/Statistical physics.pdf" class="pdf-btn" target="_blank">View PDF</a></a>
+                        <a href="notes/Statistical physics.pdf" class="pdf-btn" target="_blank" rel="noopener">View PDF</a>
                     </li>
                 </ul>
             </div>
@@ -686,97 +835,138 @@
                             <span class="course-name">Thermodynamics</span>
                             <span class="course-code">Prof. YongWoon Kim</span>
                             <span style="font-size: 0.8em; color: #666; margin-top: 2px;">
-                                Focus: Classical Thermodynamics, Kinetic Theory, Boltzmann Equation, Ensemble
+                                Focus: Classical Thermodynamics, Kinetic Theory, Boltzmann Equation, Ensembles
                             </span>
                         </div>
-                        <a href="notes/Thermodynamics.pdf" class="pdf-btn" target="_blank">View PDF</a></a>
+                        <a href="notes/Thermodynamics.pdf" class="pdf-btn" target="_blank" rel="noopener">View PDF</a>
                     </li>
                 </ul>
             </div>
 
             <div class="semester-block">
-                <h3 class="semester-title">2020 - 2021</h3>
+                <h3 class="semester-title">2020 – 2021</h3>
                 <div style="padding: 20px; background: #f0f0f0; border: 2px dashed #ccc; border-radius: 10px; text-align: center; color: #777;">
                     <p style="margin: 0; font-size: 0.95em;">
-                        📂 <strong>Archiving in progress...</strong><br>
-                        Course materials from 2020-2021 are not currently organized.<br>
-                        They will be uploaded if I get retrieval.
+                        📂 <strong>Archiving in progress</strong><br>
+                        Course materials from 2020–2021 are not yet organized and will be added as I recover them.
                     </p>
                 </div>
             </div>
         </div>
 
+        <!-- ===================== OTHERS ===================== -->
         <div id="others" class="page-section">
-            <h2>Honors & Awards</h2>
+            <h2>Honors &amp; Awards</h2>
             <ul>
+                <li><strong>Best Tutor Award</strong>, KAIST Freshman Tutoring Program (Spring 2026)</li>
                 <li>
-                    <strong>Tech Innovator Recognition</strong>, <a href="https://www.spaceappschallenge.org/2025/local-events/seoul/" target="_blank">NASA Space Apps Challenge, Seoul</a> (Fall, 2025)
+                    <strong>Tech Innovator Recognition</strong>, <a href="https://www.spaceappschallenge.org/2025/local-events/seoul/" target="_blank" rel="noopener">NASA Space Apps Challenge, Seoul</a> (Fall 2025)
                     <br>
                     <span style="font-size: 0.95em; color: #555;">
-                        👉 Project: <a href="https://2025-nasa-space-app-hekathon.github.io/geese-crossing/" target="_blank">Geese Crossing (View Result)</a>
+                        👉 Project: <a href="https://2025-nasa-space-app-hekathon.github.io/geese-crossing/" target="_blank" rel="noopener">SARchive</a> — an interactive 3D web platform that visualizes global mountain ranges through SAR data
                     </span>
                 </li>
                 <li>
                     <strong>
-                    <a href="https://engineering.kaist.ac.kr/content?menu=61" target="_blank" style="text-decoration: underline; color: inherit;">
-                    Undergraduate Research Program (URP), Excellent Award
-                    </a>
-                    </strong>, 
-                     KAIST (Fall, 2025)
+                    <a href="https://engineering.kaist.ac.kr/content?menu=61" target="_blank" rel="noopener" style="text-decoration: underline; color: inherit;">Excellent Award, Undergraduate Research Program (URP)</a>
+                    </strong>, KAIST (Fall 2025)
                 </li>
                 <li>
                     <strong>
-                    <a href="https://www.kps.or.kr/content/def/view.php?ft=29" target="_blank" style="text-decoration: underline; color: inherit;">
-                    Undergraduate Physics Research Competition, Excellent Award
-                    </a>
-                    </strong>, 
-                    Korea Physics Society (KPS) (Fall, 2025)
+                    <a href="https://www.kps.or.kr/content/def/view.php?ft=29" target="_blank" rel="noopener" style="text-decoration: underline; color: inherit;">Excellent Award, Undergraduate Physics Research Competition</a>
+                    </strong>, Korean Physical Society (Fall 2025)
                 </li>
-                <li><strong>Outstanding Presentation Awards</strong>, Korea Physics Society (KPS) (Spring, 2025)</li>
-                <li><strong>Departmental Honor Scholarship & Dean's list</strong>, Department of Physics (2025)</li>
-                <li><strong><a href="https://leadership.kaist.ac.kr/en/page/sub/sub_0501.do" target="_blank">KAIST Presidential Fellowship</a></strong> (2020)</li>
-                <li><strong>National Science & Technology Scholarship</strong> (2020)</li>
+                <li><strong>Departmental Honor Scholarship &amp; Dean's List</strong>, Department of Physics, KAIST (Spring &amp; Fall 2025)</li>
+                <li><strong>Outstanding Presentation Award</strong>, Korean Physical Society Spring Meeting (Spring 2025)</li>
+                <li><strong><a href="https://leadership.kaist.ac.kr/en/page/sub/sub_0501.do" target="_blank" rel="noopener">KAIST Presidential Fellowship</a></strong> (2020)</li>
+                <li><strong>National Science &amp; Technology Scholarship</strong> (2020)</li>
                 <li><strong>Hanseong Son JaeHan Scholarship</strong> (2019)</li>
             </ul>
 
             <br>
 
-            <h2>Teaching & Mentoring</h2>
+            <h2>Schools &amp; Training</h2>
+            <div class="item">
+                <div class="item-header">
+                    <span class="item-title">CERN Korean Summer Student Program</span>
+                    <span class="item-date">Jun – Jul 2026</span>
+                </div>
+                <span class="item-subtitle">Korean Physical Society</span>
+                <ul>
+                    <li>Studied WIMP freeze-out and FIMP freeze-in within the Higgs-portal scalar singlet model using micrOMEGAs.</li>
+                </ul>
+            </div>
+            <div class="item">
+                <div class="item-header">
+                    <span class="item-title">SKA Korea Summer Workshop 2026</span>
+                    <span class="item-date">Aug 19–21, 2026</span>
+                </div>
+                <span class="item-subtitle">KASI / KAIST, Daejeon</span>
+            </div>
+            <div class="item">
+                <div class="item-header">
+                    <span class="item-title">Radio Summer School &amp; Radio Telescope Users' Meeting</span>
+                    <span class="item-date">Aug 2025 &amp; Aug 2026</span>
+                </div>
+                <span class="item-subtitle">Korea Astronomy and Space Science Institute (KASI)</span>
+            </div>
+            <div class="item">
+                <div class="item-header">
+                    <span class="item-title">KASI–UST Winter Internship Program</span>
+                    <span class="item-date">Jan – Feb 2026</span>
+                </div>
+                <span class="item-subtitle">Korea Astronomy and Space Science Institute (KASI)</span>
+            </div>
+            <div class="item">
+                <div class="item-header">
+                    <span class="item-title">NUPS — Exoplanet Exploration Club</span>
+                    <span class="item-date">Jan – Dec 2025</span>
+                </div>
+                <span class="item-subtitle">KAIST</span>
+                <ul>
+                    <li>Presented paper reviews and participated in observation practice sessions.</li>
+                </ul>
+            </div>
+
+            <br>
+
+            <h2>Teaching &amp; Mentoring</h2>
             
             <div class="item">
                 <div class="item-header">
-                    <span class="item-title">Undergraduate Tutor (General Physics II)</span>
-                    <span class="item-date">Fall 2025</span>
+                    <span class="item-title">Undergraduate Tutor, General Physics I &amp; II</span>
+                    <span class="item-date">Fall 2025 – Present</span>
                 </div>
                 <span class="item-subtitle">KAIST Freshman Tutoring Program</span>
                 <ul>
-                    <li>Mentored 2 KAIST freshmen in General Physics II, facilitating a deeper understanding of core physics concepts.</li>
-                    <li>Conducted weekly review sessions and Q&A to help students improve problem-solving skills and academic performance.</li>
+                    <li>Lead weekly review and Q&amp;A sessions that help freshmen build a deeper understanding of core physics concepts.</li>
+                    <li>Received the Best Tutor Award (Spring 2026).</li>
                 </ul>
             </div>
 
             <div class="item">
                 <div class="item-header">
-                    <span class="item-title">Research Mentor (Science Internship Program)</span>
+                    <span class="item-title">Research Mentor, Science Internship Program (SIP)</span>
                     <span class="item-date">Summer 2025</span>
                 </div>
-                <span class="item-subtitle">UC Santa Cruz | Prof. Puragra Guha Thakurta's Group</span>
+                <span class="item-subtitle">UC Santa Cruz &middot; Prof. Puragra (Raja) GuhaThakurta's Group</span>
                 <ul>
-                    <li>Supervised a research group of 3 high school interns for the UCSC Science Internship Program (SIP).</li>
-                    <li>Guided students through the fundamentals of astronomical data analysis, coding in Python, and the process of scientific presentation.</li>
-                    <li>Successfully guided one intern to present their research at the 247th American Astronomical Society (AAS) Meeting (Jan 2026).</li>
+                    <li>Supervised a research group of three U.S. high school interns.</li>
+                    <li>Taught the fundamentals of astronomical data analysis, Python programming, and scientific presentation.</li>
+                    <li>Guided one intern to present our research at the 247th American Astronomical Society (AAS) Meeting (Jan 2026).</li>
                 </ul>
             </div>
             
-            <h2>Skills & Others</h2>
+            <h2>Skills &amp; Others</h2>
             <ul>
+                <li><strong>Research Tools:</strong> IllustrisTNG, pyatomdb/APEC, SPHEREx spectral data &amp; fitting pipeline, MCMC (emcee), micrOMEGAs</li>
                 <li><strong>Programming:</strong> Python, Git, LaTeX</li>
-                <li><strong>Languages:</strong> Korean (Native), English (TOEFL 103)</li>
-                <li><strong>Military Service:</strong> Republic of Korea Army, Honorable Discharge (Sergeant) (Jan 2022 - Jul 2023)</li>
-                <li><strong>Student Organization:</strong> NUPS — Exoplanet Exploration Club (Spring, 2025 - Present)</li>
+                <li><strong>Languages:</strong> Korean (native), English (TOEFL iBT 5.5 / 6.0; 110 / 120)</li>
+                <li><strong>Military Service:</strong> Republic of Korea Army, Sergeant, Honorable Discharge (Jan 2022 – Jul 2023)</li>
             </ul>
         </div>
 
+        <!-- ===================== GALLERY ===================== -->
         <div id="gallery" class="page-section">
             <h2>Gallery</h2>
             <p>Memories and moments.</p>
@@ -800,13 +990,16 @@
             </div>
         </div>
 
-    </div> <footer>
+    </div>
+
+    <footer>
         <div style="margin-bottom: 10px;">
-            &copy; 2026 Minjae Kim. All rights reserved. | <strong>Last updated: February 2026</strong>
+            &copy; 2026 Minjae Kim. All rights reserved. | <strong>Last updated: October 2026</strong>
         </div>
-        
-        <a href="https://hits.seeyoufarm.com">
-            <img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fminjaekim0827.github.io&count_bg=%23007BFF&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=VISITORS&edge_flat=false" alt="Visitor Count"/>
+
+        <!-- 방문자 카운터: hits.seeyoufarm.com 서비스 종료(2025.3) → hits.sh로 교체 (오늘/전체 방문수 표시) -->
+        <a class="visitor-badge" href="https://hits.sh/minjaekim0827.github.io/" target="_blank" rel="noopener" title="Visitor statistics">
+            <img alt="Visitors (today / total)" src="https://hits.sh/minjaekim0827.github.io.svg?view=today-total&amp;label=visitors&amp;color=007bff&amp;labelColor=555555">
         </a>
     </footer>
 
@@ -814,20 +1007,21 @@
         // 이메일 복사 기능
         function copyEmail() {
             const email = "heromj27@kaist.ac.kr";
-            navigator.clipboard.writeText(email).then(() => {
-                const tooltipBtn = document.getElementById("emailBtn");
+            const tooltipBtn = document.getElementById("emailBtn");
+            const showCopied = () => {
                 tooltipBtn.classList.add("show-tooltip");
-                // 2초 뒤에 "Copied!" 알림 사라짐
-                setTimeout(() => {
-                    tooltipBtn.classList.remove("show-tooltip");
-                }, 2000);
-            });
+                setTimeout(() => tooltipBtn.classList.remove("show-tooltip"), 2000);
+            };
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(email).then(showCopied).catch(() => {
+                    window.location.href = "mailto:" + email;
+                });
+            } else {
+                // 클립보드 API를 못 쓰는 환경에서는 메일 앱 열기
+                window.location.href = "mailto:" + email;
+            }
         }
 
-
-
-
-        
         function showPage(pageId) {
             const pages = document.querySelectorAll('.page-section');
             pages.forEach(page => {
@@ -855,12 +1049,13 @@
             
             window.scrollTo(0, 0);
         }
+
         const galleryData = {
             "2020-2023": [
                 {
                     title: "Military Service & Family",
                     date: "Spring 2023",
-                    desc: "Precious time with my family during the vacation while serving as a Sergeant in the ROK Army.",
+                    desc: "Precious time with my family during leave while serving as a Sergeant in the ROK Army.",
                     images: ["Images/familyphoto2023.jpg"] 
                 }
             ],
@@ -868,44 +1063,39 @@
                 {
                     title: "UC Berkeley Summer Session",
                     date: "Summer 2024",
-                    desc: "Explored the Bay Area and San Francisco while studying Introduction to Astrophysics at UC Berkeley.",
-                    // 🚨 UCBerkeley_SF.heic 파일을 jpg로 변환 후 파일명을 맞춰주세요.
+                    desc: "Explored the Bay Area and San Francisco while taking Introduction to Astrophysics at UC Berkeley — the course that turned me toward astronomy.",
                     images: ["Images/UCBerkeley_SF.jpg", "Images/UCBerkeley_GGB.jpg"] 
                 },
                 {
-                    title: "OBSCAL Lab First Meeting",
+                    title: "OBSCAL Group: First Meeting",
                     date: "Fall 2024",
-                    desc: "The beginning of my research journey. First group meeting and official photo with the OBSCAL lab members at KAIST.",
+                    desc: "The beginning of my research journey: my first group meeting and group photo with the OBSCAL members at KAIST.",
                     images: ["Images/FirstMeeting_Obscal.JPEG", "Images/grouppic_Fall2024.JPG"] 
                 }
             ],
             "2025": [
                 {
-                    title: "KAS Spring Meeting",
+                    title: "KAS & KPS Spring Meetings",
                     date: "Spring 2025",
-                    desc: "Attended the Korean Astronomical Society (KAS) and Korean Physical Society (KPS) Spring Meeting. Won the outstanding presentation award at KPS. ",
-                    // 🚨 KAS_Spring.heic를 jpg로 변환 후 넣어주세요.
+                    desc: "Presented early CGM results at the Korean Astronomical Society (KAS) and Korean Physical Society (KPS) Spring Meetings, and received the Outstanding Presentation Award at KPS.",
                     images: ["Images/KAS_Spring.jpg","Images/KPS_Spring.jpg"]
                 },
                 {
-                    title: "With ObsCAL Members",
+                    title: "With OBSCAL Members",
                     date: "Spring 2025",
-                    desc: "Spring memorial moments with OBSCAL group members during the spring semester.",
-                    // 🚨 KAS_Spring.heic를 jpg로 변환 후 넣어주세요.
+                    desc: "Memorable moments with the OBSCAL group during the spring semester.",
                     images: ["Images/grouppic_spring2025.JPG", "Images/grouppic_spring2025_2.JPG", "Images/grouppic_spring2025_3.JPG"]
                 },
                 {
                     title: "UCSC Summer Research & Lick Observatory",
                     date: "Summer 2025",
                     desc: "Visited the historic Lick Observatory during the UCSC International Summer Research Program (ISRP).",
-                    // 🚨 UCSC_lick.heic를 jpg로 변환 후 넣어주세요.
                     images: ["Images/UCSC_lick.jpg"] 
                 },
                 {
                     title: "KPS Fall Meeting & Award",
                     date: "Oct 2025",
-                    desc: "Presented the Circumgalactic Medium (CGM) study and won the Excellent Award at the Korea Physical Society (KPS) undergraduate physics competition.",
-                    // KPS 사진들을 모았습니다.
+                    desc: "Presented my circumgalactic medium (CGM) study and won the Excellent Award at the Korean Physical Society (KPS) Undergraduate Physics Research Competition.",
                     images: ["Images/KPS_Fall_poster.jpg", "Images/KPS_Fall2.jpg"] 
                 }
             ],
@@ -913,9 +1103,16 @@
                 {
                     title: "KASI Winter Internship",
                     date: "Winter 2026",
-                    desc: "Researching high-redshift quasars using SPHEREx mission data at Korea Astronomy and Space Science Institute.",
-                    images: ["Images/Coffee.jpg"] // 임시로 커피 사진을 넣었습니다. KASI 사진이 생기면 교체하세요!
+                    desc: "Studying high-redshift quasars with SPHEREx data at the Korea Astronomy and Space Science Institute.",
+                    images: ["Images/Coffee.jpg"] // KASI 사진이 생기면 교체하세요!
                 }
+                // 2026년 사진 추가 예시 (APRIM 홍콩, CERN 여름학교 등 — 사진 파일을 Images/에 올린 뒤 주석 해제):
+                // ,{
+                //     title: "APRIM 2026, Hong Kong",
+                //     date: "May 2026",
+                //     desc: "Presented my CGM X-ray poster at the Asia-Pacific Regional IAU Meeting.",
+                //     images: ["Images/APRIM2026.jpg"]
+                // }
             ]
         };
 
