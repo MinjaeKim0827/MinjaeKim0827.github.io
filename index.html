@@ -1046,7 +1046,7 @@
     </main>
 
     <footer>
-        <span>&copy; 2026 Minjae Kim. Last updated October 2026.</span>
+        <span>&copy; 2026 Minjae Kim. Last updated October 2026. This site keeps anonymous, institution-level visit statistics; no IP addresses are stored.</span>
         <a href="https://hits.sh/minjaekim0827.github.io/" target="_blank" rel="noopener" title="Visitor statistics">
             <img alt="Visitors (today / total)" src="https://hits.sh/minjaekim0827.github.io.svg?view=today-total&amp;label=visitors&amp;color=8a6a2f&amp;labelColor=5b6170">
         </a>
@@ -1471,6 +1471,32 @@
                 grid.appendChild(card);
             });
         });
+
+        /* ---------- Anonymous, institution-level visit log ----------
+           Looks up which network the visit comes from (e.g. "University of Arizona") and, for academic
+           networks only, submits {org, place, landing page} to a private Google Form. No IP address is stored.
+           Add ?tracktest to the URL to force one submission for testing. */
+        (function logAcademicVisit() {
+            const FORM = 'https://docs.google.com/forms/d/e/1FAIpQLSctizL6gJV6pC3AKJ434SA_SbcOKgwGl2iBr2kUl2rXBw9z7Q/formResponse';
+            const FIELDS = { org: 'entry.761344899', place: 'entry.2089727193', page: 'entry.1053003611' };
+            const ACADEMIC = /universit|college|institut|observatory|laborator|academy|school of|research|\.edu\b|NASA|NOIRLab|Smithsonian|Carnegie/i;
+            const SELF = /Korea Advanced Institute|KAIST|Korea Astronomy/i;
+            const test = new URLSearchParams(location.search).has('tracktest');
+            try { if (!test && sessionStorage.getItem('mk_logged')) return; } catch (e) {}
+            fetch('https://ipinfo.io/json', { cache: 'no-store' })
+                .then(r => r.json())
+                .then(d => {
+                    const org = (d.org || '').replace(/^AS\d+\s*/, '');
+                    if (!test && (!ACADEMIC.test(org) || SELF.test(org))) return;
+                    const body = new URLSearchParams();
+                    body.append(FIELDS.org, (test ? '[test] ' : '') + (org || 'unknown'));
+                    body.append(FIELDS.place, [d.city, d.region, d.country].filter(Boolean).join(', '));
+                    body.append(FIELDS.page, location.hash || '#about');
+                    return fetch(FORM, { method: 'POST', mode: 'no-cors', body });
+                })
+                .then(() => { try { sessionStorage.setItem('mk_logged', '1'); } catch (e) {} })
+                .catch(() => {});
+        })();
 
         route();
     })();
